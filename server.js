@@ -5,6 +5,9 @@ const logger = require('morgan');
 // Load environment variables
 require('dotenv').config({ path: "./config/.env" })
 
+//Static Folder
+app.use(express.static("public"));
+
 // Logging
 app.use(logger('dev'))
 
