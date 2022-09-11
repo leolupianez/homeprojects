@@ -1,0 +1,28 @@
+{
+  "name": "home-services-project",
+  "version": "1.0.0",
+  "description": "An app for homeowners to connect with available home service professionals.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joselupianez/home-services-project.git"
+  },
+  "author": "Jose Lupianez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joselupianez/home-services-project/issues"
+  },
+  "homepage": "https://github.com/joselupianez/home-services-project#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
