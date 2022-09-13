@@ -1,0 +1,64 @@
+<div class="container py-5">
+    <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Register</h1>
+    <form action="/register" method="POST">
+        <fieldset class="row g-3 py-2">
+            <legend>User Details</legend>
+            <div class="col-md-6">
+                <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last name" required>
+            </div>
+            <div class="col-md-12">
+                <label for="emailAddress" class="form-label">Email Address</label>
+                <input type="email" name="emailAddress" class="form-control" id="emailAddress" aria-describedby="validationEmail" placeholder="Email Address" required>
+                <div id="validationEmail" class="invalid-feedback">
+                    Email address is being used by another account.
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="passwordInput" aria-describedby="validationPassword" placeholder="*******" required>
+                <div id="validationPassword" class="invalid-feedback">
+                    Password needs to be at least 6 digits.
+                </div>      
+            </div>
+            <div class="col-md-6">
+                <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+                <input type="password" name="confirmPassword" class="form-control" id="confirmPasswordInput" aria-describedby="validationPasswordConfirmation" placeholder="*******" required>
+                <div id="validationPasswordConfirmation" class="invalid-feedback">
+                    Password does not match.
+                </div>      
+            </div>
+        </fieldset>
+        <fieldset class="row g-3 py-2">
+            <legend>User Location</legend>
+            <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <input type="text" name="city" class="form-control" id="city" aria-describedby="validationCity" placeholder="City" required>
+                <div id="validationCity" class="invalid-feedback">
+                    Please provide a valid city.
+                </div>          
+            </div>
+            <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <input type="text" name="state" class="form-control" id="state" aria-describedby="validationState" placeholder="State" required>
+                <div id="validationState" class="invalid-feedback">
+                    Please provide a valid state.
+                </div>  
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" name="zipCode" class="form-control" id="inputZip" aria-describedby="validationZipCode" placeholder="Zipcode" required>
+                <div id="validationZipCode" class="invalid-feedback">
+                    Please provide a valid zipcode.
+                </div>  
+            </div>
+        </fieldset>
+        <div class="col-12 py-3">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>        
+    </form>
+</div>
