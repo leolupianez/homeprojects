@@ -2,10 +2,14 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const logger = require('morgan')
+const connectDB = require("./config/database");
 const mainRoutes = require('./routes/main')
 
 // Load environment variables
 require('dotenv').config({ path: "./config/.env" })
+
+//Connect To Database
+connectDB();
 
 // EJS Layouts
 app.use(expressLayouts)

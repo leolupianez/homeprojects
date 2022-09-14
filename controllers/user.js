@@ -1,17 +1,18 @@
-const validator = require("validator");
+const validator = require("validator")
+const User = require('../models/User')
 
 module.exports = {
     getRegister: (req, res) => {
         res.render("register", {validationErrors: false})
     },
-    postRegister: (req, res) => {
+    postRegister: (req, res, next) => {
         console.log(req.body)
-
-        const { firstName, lastName, emailAddress, password, confirmPassword, city, state } = req.body;
-        const validationErrors = {emailError: false, passwordError: false, confirmError: false};
+    
+        const { firstName, lastName, email, password, confirmPassword, city, state } = req.body;
+        const validationErrors = {emailTakenError: false, emailError: false, passwordError: false, confirmError: false};
         
         // Not a valid email
-        if (!validator.isEmail(emailAddress))
+        if (!validator.isEmail(email))
             validationErrors.emailError = true;
         // Password is not at least 6 characters
         if (!validator.isLength(password, { min:6 }))
@@ -25,12 +26,39 @@ module.exports = {
                 validationErrors,
                 firstName,
                 lastName, 
-                emailAddress, 
+                email, 
                 password,
                 confirmPassword, 
                 city, 
                 state,
             });
         }
+
+        const user = new User({firstName, lastName, email, password})
+        User.findOne({email: email}, (err, existingUser) => {
+            if(err){
+                return next(err)
+            }
+            if(existingUser){
+                validationErrors.emailTakenError = true;
+                res.render('register', {
+                    validationErrors,
+                    firstName,
+                    lastName, 
+                    email, 
+                    password,
+                    confirmPassword, 
+                    city, 
+                    state,
+                });
+            }else{
+                user.save(err => {
+                    if(err){
+                        return next(err)
+                    }
+                    res.redirect('/');
+                })
+            }
+        })
     }
 }

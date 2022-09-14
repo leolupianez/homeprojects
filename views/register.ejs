@@ -12,10 +12,10 @@
                 <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
             </div>
             <div class="col-md-12">
-                <label for="emailAddress" class="form-label">Email Address</label>
-                <input type="email" name="emailAddress" class="form-control <%= validationErrors.emailError ? 'is-invalid' : '' %>" id="emailAddress" aria-describedby="validationEmail" placeholder="Email Address" value="<%= typeof emailAddress != 'undefined' ? emailAddress : '' %>" required>
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control <%= validationErrors.emailError || validationErrors.emailTakenError ? 'is-invalid' : '' %>" id="email" aria-describedby="validationEmail" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
                 <div id="validationEmail" class="invalid-feedback">
-                    Email address is being used by another account.
+                    <%= validationErrors.emailTakenError ? 'Email address is being used by another account.' : 'Invalid email.' %>
                 </div> 
             </div>
             <div class="col-md-6">
