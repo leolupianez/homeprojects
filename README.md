@@ -6,9 +6,9 @@
     <br />
     <a href="#">View</a>
     ·
-    <a href="https://github.com/joselupianez/home-services/issues">Report Bug</a>
+    <a href="https://github.com/joselupianez/home-services-project/issues">Report Bug</a>
     ·
-    <a href="https://github.com/joselupianez/home-services/pulls">Request Feature</a>
+    <a href="https://github.com/joselupianez/home-services-project/pulls">Request Feature</a>
   </p>
 </div>
 
