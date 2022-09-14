@@ -8,8 +8,16 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item px-2">
-                        <a href="/service" class="nav-link">Find Home Service Pros</a>
+                        <a href="/service" class="nav-link">Find Pros</a>
                     </li>
+                    <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
+                    <li class="nav-item px-2">
+                        <a href="/login" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                    </li>
+                    <% } else { %>
                     <li class="nav-item px-2">
                         <a href="/register" class="nav-link">Sign Up</a>
                     </li>
@@ -19,6 +27,7 @@
                     <li class="nav-item px-2">
                         <a href="/join" class="btn btn-primary">Join Pros</a>
                     </li>
+                    <% } %>
                 </ul>
             </div>
         </div>
