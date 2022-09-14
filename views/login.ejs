@@ -1,0 +1,25 @@
+<div class="container py-4">
+    <%- include('./partials/errors.ejs') %>
+    <h1 class="mb-4 pb-2 pb-md-0">Login</h1>
+    <form action="/login" method="POST">
+        <fieldset class="row g-3 py-2">
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control <%= validationErrors.emailError ? 'is-invalid' : '' %>" id="email" aria-describedby="validationEmail" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                <div id="validationEmail" class="invalid-feedback">
+                    Please enter a valid email.
+                </div> 
+            </div>
+            <div class="col-md-12">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control <%= validationErrors.passwordError ? 'is-invalid' : '' %>" id="passwordInput" aria-describedby="validationPassword" placeholder="*******" required>
+                <div id="validationPassword" class="invalid-feedback">
+                    Please enter a valid password.
+                </div>      
+            </div>
+        </fieldset>
+        <div class="col-12 py-3">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>        
+    </form>
+</div>
