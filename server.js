@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts')
 const logger = require('morgan')
 const connectDB = require("./config/database");
 const mainRoutes = require('./routes/main')
+const projectsRoutes = require('./routes/projects')
 
 // Load environment variables
 require('dotenv').config({ path: "./config/.env" })
@@ -54,7 +55,8 @@ app.use(passport.session());
 app.use(flash());
 
 // Setup Routes
-app.use("/", mainRoutes);
+app.use("/", mainRoutes)
+app.use("/projects", projectsRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}.`)
