@@ -1,0 +1,84 @@
+<div class="container py-4">
+    <h1 class="mb-4 pb-2 pb-md-0">New Project</h1>
+    <form action="/projects/add" method="POST">
+        <h4 class="mb-3">Project Category</h4>
+        <div class="my-3 g-3">
+            <input type="radio" class="btn-check" name="category" id="air-conditioning" autocomplete="off" value="air-conditioning" required <%= typeof category != 'undefined' && category == 'airconditioning' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="air-conditioning">
+                <i class="fa-solid fa-wind"></i>
+                <span>Air Conditioning</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="plumbing" autocomplete="off" value="plumbing" required <%= typeof category != 'undefined' && category == 'plumbing' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="plumbing">
+                <i class="fa-solid fa-wrench"></i>
+                <span>Plumbing</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="roofing" autocomplete="off" value="roofing" required <%= typeof category != 'undefined' && category == 'roofing' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="roofing">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Roofing</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="painting" autocomplete="off" value="painting" required <%= typeof category != 'undefined' && category == 'painting' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="painting">
+                <i class="fa-solid fa-paint-roller"></i>
+                <span>Painting</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="landscape" autocomplete="off" value="landscape" required <%= typeof category != 'undefined' && category == 'landscape' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="landscape">
+                <i class="fa-solid fa-tree"></i>
+                <span>Landscape</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="electrical" autocomplete="off" value="electrical" required <%= typeof category != 'undefined' && category == 'electrical' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="electrical">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Electrical</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="cleaning" autocomplete="off" value="cleaning" required <%= typeof category != 'undefined' && category == 'cleaning' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="cleaning">
+                <i class="fa-solid fa-broom"></i>
+                <span>Cleaning</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="category" id="handyman" autocomplete="off" value="handyman" required <%= typeof category != 'undefined' && category == 'handyman' ? 'checked' : '' %>>
+            <label class="btn btn-outline-primary" for="handyman">
+                <i class="fa-solid fa-toolbox"></i>
+                <span>Handyman</span>
+            </label>
+        </div>
+        <hr class="my-4">
+        <h4 class="mb-3">Project Description</h4>
+        <div class="my-3 g-3 row">
+            <div class="col-9">
+                <label for="title" class="form-label">Project Title</label>
+                <input type="text" class="form-control <%= typeof validationErrors != 'undefined' && validationErrors.titleError ? 'is-invalid' : '' %>" name="title" id="title" maxlength="120" value="<%= typeof title != 'undefined' ? title : '' %>" required>
+                <div class="invalid-feedback">
+                    Project title needs to be between 5 to 120 characters.
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="zipCode" class="form-label">Project Zip Code</label>
+                <input type="text" class="form-control <%= typeof validationErrors != 'undefined' && validationErrors.zipCodeError ? 'is-invalid' : '' %>" name="zipCode" id="zipCode" value="<%= typeof zipCode != 'undefined' ? zipCode : '' %>" required>
+                <div class="invalid-feedback">
+                    Invalid zipcode.
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="description" class="form-label">Project Description</label>
+                <textarea class="form-control <%= typeof validationErrors != 'undefined' && validationErrors.descriptionError ? 'is-invalid' : '' %>" name="description" id="description" rows="3" required><%= typeof description != 'undefined' ? description : '' %></textarea>
+                <div class="invalid-feedback">
+                    Project description is required.
+                </div>
+            </div>            
+        </div>
+        <hr class="my-4">
+        <div class="col-12">
+            <button type="submit" class="btn btn-lg btn-primary">Add Project</button>
+        </div>        
+    </form>
+</div>
