@@ -14,14 +14,14 @@ module.exports = {
             isLoggedIn: req.isAuthenticated(),
         })
     },
-    postAdd: async (req, res) => {
+    postAdd: async (req, res, next) => {
         const validationErrors = {categoryError: false, titleError: false, descriptionError: false, zipCodeError: false}
         const { category, title, description, zipCode } = req.body
         let errors = []
 
         // Invalid category
         const allowedCategories = ['air-conditioning', 'plumbing', 'roofing', 'painting', 'landscape', 'electrical', 'cleaning', 'handyman']
-        if (!validator.isIn(category, allowedCategories)){
+        if (!category || !validator.isIn(category, allowedCategories) ){
             validationErrors.categoryError = true
             errors.push({msg: 'Invalid category.'})
         }

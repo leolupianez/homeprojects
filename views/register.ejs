@@ -1,40 +1,41 @@
-<div class="container py-4">
-    <h1 class="mb-4 pb-2 pb-md-0">Register</h1>
-    <form action="/register" method="POST">
-        <fieldset class="row g-3 py-2">
-            <legend>User Details</legend>
-            <div class="col-md-6">
-                <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
-                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">Register</h2>
+        <form action="/register" method="POST">
+            <div class="form-control">
+                <label for="firstName" class="label">
+                    <span class="label-text">First Name</span>
+                </label>
+                <input type="text" name="firstName" id="firstName" class="input input-bordered" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
             </div>
-            <div class="col-md-6">
-                <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
+            <div class="form-control">
+                <label for="lastName" class="label">
+                    <span class="label-text">Last Name</span>
+                </label>
+                <input type="text" name="lastName" id="lastName" class="input input-bordered" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
             </div>
-            <div class="col-md-12">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" name="email" class="form-control <%= validationErrors.emailError || validationErrors.emailTakenError ? 'is-invalid' : '' %>" id="email" aria-describedby="validationEmail" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
-                <div id="validationEmail" class="invalid-feedback">
-                    <%= validationErrors.emailTakenError ? 'Email address is being used by another account.' : 'Invalid email.' %>
-                </div> 
+            <div class="form-control">
+                <label for="email" class="label">
+                    <span class="label-text">Email</span>
+                </label>
+                <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
             </div>
-            <div class="col-md-6">
-                <label for="passwordInput" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control <%= validationErrors.passwordError ? 'is-invalid' : '' %>" id="passwordInput" aria-describedby="validationPassword" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
-                <div id="validationPassword" class="invalid-feedback">
-                    Password needs to be at least 6 digits.
-                </div>      
+            <div class="form-control">
+                <label for="password" class="label">
+                    <span class="label-text">Password</span>
+                </label>
+                <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
             </div>
-            <div class="col-md-6">
-                <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-                <input type="password" name="confirmPassword" class="form-control <%= validationErrors.confirmationError ? 'is-invalid' : '' %>" id="confirmPasswordInput" aria-describedby="validationPasswordConfirmation" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
-                <div id="validationPasswordConfirmation" class="invalid-feedback">
-                    Password does not match.
-                </div>      
+            <div class="form-control">
+                <label for="confirmPassword" class="label">
+                    <span class="label-text">Confirm Password</span>
+                </label>
+                <input type="password" name="confirmPassword" class="input input-bordered <%= validationErrors.confirmationError ? 'input-error' : '' %>" id="confirmPassword" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
             </div>
-        </fieldset>
-        <div class="col-12 py-3">
-            <button type="submit" class="btn btn-primary">Register</button>
-        </div>        
-    </form>
+
+            <div class="form-control mt-6">
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
 </div>

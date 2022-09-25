@@ -20,7 +20,6 @@ const ProjectSchema = new mongoose.Schema({
     },
     zipCode: { 
         type: String, 
-        unique: true,
         required: true 
     },
     images: [{
