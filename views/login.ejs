@@ -1,24 +1,22 @@
-<div class="container py-4">
-    <h1 class="mb-4 pb-2 pb-md-0">Login</h1>
-    <form action="/login" method="POST">
-        <fieldset class="row g-3 py-2">
-            <div class="col-md-12">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" name="email" class="form-control <%= validationErrors.emailError ? 'is-invalid' : '' %>" id="email" aria-describedby="validationEmail" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
-                <div id="validationEmail" class="invalid-feedback">
-                    Please enter a valid email.
-                </div> 
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">Login</h2>
+        <form action="/login" method="POST">
+            <div class="form-control">
+                <label for="email" class="label">
+                    <span class="label-text">Email</span>
+                </label>
+                <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
             </div>
-            <div class="col-md-12">
-                <label for="passwordInput" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control <%= validationErrors.passwordError ? 'is-invalid' : '' %>" id="passwordInput" aria-describedby="validationPassword" placeholder="*******" required>
-                <div id="validationPassword" class="invalid-feedback">
-                    Please enter a valid password.
-                </div>      
+            <div class="form-control">
+                <label for="password" class="label">
+                    <span class="label-text">Password</span>
+                </label>
+                <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
             </div>
-        </fieldset>
-        <div class="col-12 py-3">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>        
-    </form>
+            <div class="form-control mt-6">
+                <button class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -1,38 +1,41 @@
-<header>
-    <nav class="navbar navbar-expand-md bg-light navbar-light">
-        <div class="container">
-            <a href="#" class="navbar-brand"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item px-2">
-                        <a href="/projects/add" class="nav-link">New Project</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/projects" class="nav-link">My Requests</a>
-                    </li>
+<header class="bg-base-100 shadow-sm">
+    <div class="container mx-auto">
+        <div class="navbar">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
+                            <li><a href="/projects">My Projects</a></li>
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/register">Sign Up</a></li>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="#">Join Pros</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal p-0">
                     <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                    <li class="nav-item px-2">
-                        <a href="/login" class="nav-link">Profile</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/logout" class="btn btn-primary">Logout</a>
-                    </li>
+                        <li><a href="/projects">My Projects</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     <% } else { %>
-                    <li class="nav-item px-2">
-                        <a href="/register" class="nav-link">Sign Up</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/login" class="nav-link">Log In</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/join" class="btn btn-primary">Join Pros</a>
-                    </li>
+                        <li><a href="/register">Sign Up</a></li>
+                        <li><a href="/login">Log In</a></li>
+                        <li><a href="#">Join Pros</a></li>
                     <% } %>
                 </ul>
             </div>
+            <div class="navbar-end">
+                <a href="/projects/add" class="btn">New Project</a>
+            </div>
         </div>
-    </nav>
+    </div>
 </header>
