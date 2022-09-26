@@ -1,0 +1,43 @@
+<h1 class="text-5xl font-bold py-6">My Projects</h1>
+
+<% if(projects.length > 0){ %>
+    <div class="overflow-x-auto w-full">
+        <table class="table w-full">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <% projects.forEach(project => { %>
+                <tr>
+                    <td>
+                        <a href="/projects/<%= project._id %>" class="font-bold"><%= project.title %></a>
+                    </td>
+                    <td>
+                        <span><%= project.category.charAt(0).toUpperCase() + project.category.slice(1) %></span>
+                    </td>
+                    <td><span class="badge badge-sm <%= project.status == 'open' ? 'badge-primary' : 'badge-accent' %>"><%= project.status %></span></td>
+                    <td>
+                        <a href="/projects/<%= project._id %>" class="btn btn-ghost btn-xs">View</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            
+        </table>
+    </div>
+<% } else { %>
+<p class="font-bold">You have no projects yet.</p>
+<% } %>

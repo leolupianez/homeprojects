@@ -4,10 +4,16 @@ const Project = require('../models/Project')
 const user = require('./user')
 
 module.exports = {
-    getIndex: (req, res) => {
-        res.render("projects/index", {
-            isLoggedIn: req.isAuthenticated()
-        })
+    getIndex: async (req, res) => {
+        try {
+            const projects = await Project.find({user: req.user.id}).sort({ createdAt: "desc" }).lean();
+            res.render("projects/index", {
+                isLoggedIn: req.isAuthenticated(),
+                projects
+            })
+          } catch (err) {
+            console.log(err);
+        }
     },
     getAdd: (req, res) => {
         res.render("projects/add", {
@@ -20,7 +26,7 @@ module.exports = {
         let errors = []
 
         // Invalid category
-        const allowedCategories = ['air-conditioning', 'plumbing', 'roofing', 'painting', 'landscape', 'electrical', 'cleaning', 'handyman']
+        const allowedCategories = ['air conditioning', 'plumbing', 'roofing', 'painting', 'landscape', 'electrical', 'cleaning', 'handyman']
         if (!category || !validator.isIn(category, allowedCategories) ){
             validationErrors.categoryError = true
             errors.push({msg: 'Invalid category.'})
@@ -28,14 +34,17 @@ module.exports = {
         // Title is empty or too long
         if (!validator.isLength(title.trim(), {min: 5, max: 120})){
             validationErrors.titleError = true
+            errors.push({msg: 'Project title needs to be between 5 to 120 characters.'})
         }
         // Description is empty
         if (!validator.isLength(description.trim(), {min: 5})){
             validationErrors.descriptionError = true
+            errors.push({msg: 'Project description is required.'})
         }
         // Invalid zip code
         if(!zipcodes.lookup(zipCode)){
             validationErrors.zipCodeError = true
+            errors.push({msg: 'Invalid zipcode.'})
         }
 
         if (Object.values(validationErrors).indexOf(true) > -1) {
