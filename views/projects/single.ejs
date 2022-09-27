@@ -1,0 +1,28 @@
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title"><%= project.title %></h2>
+        <p><%= project.description %></p>
+        <% if(project.images.length > 0){ %>
+            <div class="divider"></div>
+            <h3 class="font-bold uppercase">Photos</h3>
+            <div class="carousel carousel-center p-4 space-x-4 rounded-box">
+                <% for(let i = 1; i <= project.images.length; i++){ %>
+                    <div id="item<%=i%>" class="carousel-item w-1/2">
+                        <a href="#modal-<%=i%>"><img src="<%=project.images[i-1]%>" class="rounded-box" /></a>
+                    </div>
+                <% } %>
+            </div>
+
+            <% for(let i = 1; i <= project.images.length; i++){ %>
+            <div class="modal" id="modal-<%=i%>">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <img src="<%=project.images[i-1]%>" class="w-full" />
+                    <div class="modal-action">
+                        <a href="#" class="btn">Close</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        <% } %>
+    </div>
+</div>

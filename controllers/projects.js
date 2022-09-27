@@ -5,12 +5,23 @@ const Project = require('../models/Project')
 const user = require('./user')
 
 module.exports = {
-    getIndex: async (req, res) => {
+    getProjects: async (req, res) => {
         try {
             const projects = await Project.find({user: req.user.id}).sort({ createdAt: "desc" }).lean();
             res.render("projects/index", {
                 isLoggedIn: req.isAuthenticated(),
                 projects
+            })
+          } catch (err) {
+            console.log(err);
+        }
+    },
+    getProject: async (req, res) => {
+        try {
+            const project = await Project.findById(req.params.id).lean();
+            res.render("projects/single", {
+                isLoggedIn: req.isAuthenticated(),
+                project
             })
           } catch (err) {
             console.log(err);
