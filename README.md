@@ -20,6 +20,7 @@ Home Services is an app built with the MVC pattern implemented that uses EJS, CS
 [![JS][Javascript]][Javascript]
 [![ExpressJS][Express.JS]][Express.JS]
 [![NodeJS][Node.JS]][Node.JS]
+[![TailwindCSS][Tailwind.CSS]][Tailwind.CSS]
 
 ## Installation
 
@@ -32,6 +33,9 @@ npm install
   - PORT = `2121` (can be any port)
   - DB_STRING = `your database URI`
   - SESSION_SECRET = `random string` (can be any string)
+  - CLOUD_NAME = `cloudinary cloud name`
+  - API_KEY = `cloudinary api key`
+  - API_SECRET = `cloudinary api secret`
 
 ### Run
 Start the development server
@@ -43,3 +47,4 @@ npm run dev
 [Javascript]: https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [Express.JS]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Node.JS]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Tailwind.CSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
