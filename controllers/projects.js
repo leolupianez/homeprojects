@@ -17,7 +17,7 @@ module.exports = {
     },
     getProject: async (req, res) => {
         try {
-            const project = await Project.findOne({id: req.params.id}).lean();
+            const project = await Project.findById(req.params.id).lean();
             res.render("projects/single", {
                 isLoggedIn: req.isAuthenticated(),
                 project
