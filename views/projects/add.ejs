@@ -1,7 +1,7 @@
 <div class="card bg-base-100 shadow-xl">
     <div class="card-body">
         <h2 class="card-title">New Project</h2>
-        <form action="/projects/add" method="POST">
+        <form enctype="multipart/form-data" action="/projects/add" method="POST">
             <div class="form-control">
                 <label for="category" class="label">
                     <span class="label-text">Category</span>
@@ -36,6 +36,16 @@
                 </label>
                 <textarea name="description" id="description" rows="3" class="textarea textarea-bordered h-24 <%= typeof validationErrors != 'undefined' && validationErrors.descriptionError ? 'textarea-error' : '' %>" placeholder="Description" required><%= typeof description != 'undefined' ? description : '' %></textarea>
             </div>
+            <div class="form-control">
+                <label for="image-upload" class="label">
+                    <span class="label-text">Add Pictures</span>
+                </label>
+                <input type="file" id="image-upload" name="photos" class="block w-full text-sm text-gray-900 rounded-lg border border-gray-300 cursor-pointer focus:outline-none" multiple>
+            </div>
+
+            
+            <div class="grid gap-x-8 gap-y-4 grid-cols-5 py-3" id="preview"></div>
+            
             <div class="form-control mt-6">
                 <button class="btn btn-primary">Add Project</button>
             </div>

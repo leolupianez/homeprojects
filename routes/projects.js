@@ -6,6 +6,6 @@ const projectsController = require('../controllers/projects')
 
 router.get('/', ensureAuth, projectsController.getIndex)
 router.get('/add', ensureAuth, projectsController.getAdd)
-router.post('/add', ensureAuth, projectsController.postAdd)
+router.post('/add', ensureAuth, upload.array('photos', 10), projectsController.postAdd)
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const validator = require('validator')
 const zipcodes = require('zipcodes')
+const cloudinary = require("../middleware/cloudinary");
 const Project = require('../models/Project')
 const user = require('./user')
 
@@ -47,6 +48,16 @@ module.exports = {
             errors.push({msg: 'Invalid zipcode.'})
         }
 
+        let photos = []
+        if(req.files.length > 1){
+            console.log('hi')
+            for (let i = 0; i < req.files.length; i++) {
+                // Upload image to cloudinary
+                const result = await cloudinary.uploader.upload(req.files[i].path)
+                photos.push(result.secure_url)
+            }
+        }
+
         if (Object.values(validationErrors).indexOf(true) > -1) {
             if(errors.length > 0) req.flash("errors", errors)
             res.render('projects/add', {
@@ -60,7 +71,7 @@ module.exports = {
         }else {
             // Successful validation
             try {
-                const project = new Project({user: req.user.id, title, category, description, zipCode})
+                const project = new Project({user: req.user.id, title, category, description, zipCode, images: photos})
                 project.save(err => {
                     if(err){
                         return next(err)
