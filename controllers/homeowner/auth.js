@@ -1,10 +1,10 @@
 const passport = require("passport");
 const validator = require("validator")
-const User = require('../models/User')
+const User = require('../../models/User')
 
 module.exports = {
     getRegister: (req, res) => {
-        res.render("register", {validationErrors: false})
+        res.render("homeowner/register", {validationErrors: false})
     },
     postRegister: (req, res, next) => {
         console.log(req.body)
@@ -23,7 +23,7 @@ module.exports = {
             validationErrors.confirmError = true;
         
         if (Object.values(validationErrors).indexOf(true) > -1) {
-            res.render('register', {
+            res.render('homeowner/register', {
                 validationErrors,
                 firstName,
                 lastName, 
@@ -39,7 +39,7 @@ module.exports = {
                 }
                 if(existingUser){
                     validationErrors.emailTakenError = true;
-                    res.render('register', {
+                    res.render('homeowner/register', {
                         validationErrors,
                         firstName,
                         lastName, 
@@ -64,7 +64,7 @@ module.exports = {
         }
     },
     getLogin: (req, res) => {
-        res.render("login", {validationErrors: false})
+        res.render("homeowner/login", {validationErrors: false})
     },
     postLogin: (req, res, next) => {
         const validationErrors = {emailError: false, passwordError: false}
@@ -78,7 +78,7 @@ module.exports = {
             validationErrors.passwordError = true;
 
         if (Object.values(validationErrors).indexOf(true) > -1) {
-            res.render('login', {
+            res.render('homeowner/login', {
                 validationErrors,
                 email: req.body.email
             })
