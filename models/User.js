@@ -1,6 +1,18 @@
 const bcrypt = require("bcrypt")
 const mongoose = require("mongoose")
 
+const subCompanySchema = mongoose.Schema({
+    companyName: {
+        type: String,
+    },
+    logo: {
+        type: String,
+    },
+    phoneNumber: {
+        type: String,
+    },
+})
+
 const UserSchema = new mongoose.Schema({
     firstName: {
         type: String, 
@@ -18,6 +30,13 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    isProfessional: {
+        type: Boolean,
+        default: false
+    },
+    company: {
+        type: subCompanySchema,
     },
 })
   

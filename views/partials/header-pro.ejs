@@ -8,33 +8,30 @@
                     </label>
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                            <li><a href="/projects">My Projects</a></li>
+                            <li><a href="/projects">Projects</a></li>
                             <li><a href="/profile">Profile</a></li>
-                            <li><a href="/logout">Logout</a></li>
+                            <li><a href="/professional/logout">Logout</a></li>
                         <% } else { %>
-                            <li><a href="/register">Sign Up</a></li>
-                            <li><a href="/login">Log In</a></li>
-                            <li><a href="/professional">Join Pros</a></li>
+                            <li><a href="/professional/register">Sign Up</a></li>
+                            <li><a href="/professional/login">Log In</a></li>
+                            <li><a href="/">Join Homeowners</a></li>
                         <% } %>
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
+                <a href="/professional" class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
                     <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                        <li><a href="/projects">My Projects</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/professional/projects">Projects</a></li>
+                        <li><a href="/professional/profile">Profile</a></li>
+                        <li><a href="/professional/logout">Logout</a></li>
                     <% } else { %>
-                        <li><a href="/register">Sign Up</a></li>
-                        <li><a href="/login">Log In</a></li>
-                        <li><a href="/professional">Join Pros</a></li>
+                        <li><a href="/professional/register">Sign Up</a></li>
+                        <li><a href="/professional/login">Log In</a></li>
+                        <li><a href="/">Join Homeowners</a></li>
                     <% } %>
                 </ul>
-            </div>
-            <div class="navbar-end">
-                <a href="/projects/add" class="btn">New Project</a>
             </div>
         </div>
     </div>
