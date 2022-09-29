@@ -11,6 +11,9 @@ const subCompanySchema = mongoose.Schema({
     phoneNumber: {
         type: String,
     },
+    zipCodes: [{
+        type: String
+    }]
 })
 
 const UserSchema = new mongoose.Schema({
