@@ -3,15 +3,18 @@ const app = express()
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require("connect-mongo");
-const flash = require("express-flash");
+const MongoStore = require("connect-mongo")
+const methodOverride = require("method-override")
+const flash = require("express-flash")
 const expressLayouts = require('express-ejs-layouts')
 const logger = require('morgan')
-const connectDB = require("./config/database");
-const mainRoutes = require('./routes/main')
-const projectsRoutes = require('./routes/projects')
-const professionalsRoutes = require('./routes/professionals')
-
+const connectDB = require("./config/database")
+// Homeowner Routes
+const homeownerMainRoutes = require('./routes/homeowner/main')
+const homeownerProjectsRoutes = require('./routes/homeowner/projects')
+// Professional Routes
+const proMainRoutes = require('./routes/professional/main')
+const proProjectsRoutes = require('./routes/professional/projects')
 
 // Load environment variables
 require('dotenv').config({ path: "./config/.env" })
@@ -39,6 +42,9 @@ app.use(express.json());
 // Logging
 app.use(logger('dev'))
 
+//Override Put / Delete
+app.use(methodOverride("_method"))
+
 // Setup Sessions - stored in MongoDB
 app.use(
     session({
@@ -57,9 +63,10 @@ app.use(passport.session());
 app.use(flash());
 
 // Setup Routes
-app.use("/", mainRoutes)
-app.use("/projects", projectsRoutes)
-app.use("/professional", professionalsRoutes)
+app.use("/", homeownerMainRoutes)
+app.use("/projects", homeownerProjectsRoutes)
+app.use("/pro", proMainRoutes)
+app.use("/pro/projects", proProjectsRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}.`)

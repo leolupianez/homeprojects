@@ -10,25 +10,25 @@
                         <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
                             <li><a href="/projects">Projects</a></li>
                             <li><a href="/profile">Profile</a></li>
-                            <li><a href="/professional/logout">Logout</a></li>
+                            <li><a href="/pro/logout">Logout</a></li>
                         <% } else { %>
-                            <li><a href="/professional/register">Sign Up</a></li>
-                            <li><a href="/professional/login">Log In</a></li>
+                            <li><a href="/pro/register">Sign Up</a></li>
+                            <li><a href="/pro/login">Log In</a></li>
                             <li><a href="/">Join Homeowners</a></li>
                         <% } %>
                     </ul>
                 </div>
-                <a href="/professional" class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
+                <a href="/pro" class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
                     <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                        <li><a href="/professional/projects">Projects</a></li>
-                        <li><a href="/professional/profile">Profile</a></li>
-                        <li><a href="/professional/logout">Logout</a></li>
+                        <li><a href="/pro/projects">Projects</a></li>
+                        <li><a href="/pro/profile">Profile</a></li>
+                        <li><a href="/pro/logout">Logout</a></li>
                     <% } else { %>
-                        <li><a href="/professional/register">Sign Up</a></li>
-                        <li><a href="/professional/login">Log In</a></li>
+                        <li><a href="/pro/register">Sign Up</a></li>
+                        <li><a href="/pro/login">Log In</a></li>
                         <li><a href="/">Join Homeowners</a></li>
                     <% } %>
                 </ul>

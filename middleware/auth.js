@@ -6,11 +6,11 @@ module.exports = {
         res.redirect("/");
       }
     },
-    ensureClient: function (req, res, next) {
+    ensureHomeowner: function (req, res, next) {
       if (!req.isAuthenticated() || !req.user.isProfessional) {
         return next();
       } else {
-        res.redirect("/professional");
+        res.redirect("/pro");
       }
     },
     ensureProfessional: function (req, res, next) {

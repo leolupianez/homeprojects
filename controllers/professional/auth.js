@@ -1,14 +1,8 @@
 const passport = require("passport");
 const validator = require("validator")
-const User = require('../models/User')
+const User = require('../../models/User')
 
 module.exports = {
-    getIndex: (req, res) => {
-        res.render("professional/index", {
-            isLoggedIn: req.isAuthenticated(),
-            layout: './layouts/pro'
-        })
-    },
     getRegister: (req, res) => {
         res.render("professional/register", {layout: './layouts/pro', validationErrors: false})
     },
@@ -31,6 +25,7 @@ module.exports = {
 
         if (Object.values(validationErrors).indexOf(true) > -1) {
             res.render('professional/register', {
+                layout: './layouts/pro',
                 validationErrors,
                 firstName,
                 lastName, 
@@ -50,6 +45,7 @@ module.exports = {
                 if(existingUser){
                     validationErrors.emailTakenError = true;
                     res.render('professional/register', {
+                        layout: './layouts/pro',
                         validationErrors,
                         firstName,
                         lastName, 
@@ -68,7 +64,7 @@ module.exports = {
                             if (err) {
                                 return next(err);
                             }
-                            res.redirect('/professional');
+                            res.redirect('/pro');
                         })
                     })
                 }
@@ -76,7 +72,7 @@ module.exports = {
         }
     },
     getLogin: (req, res) => {
-        res.render("login", {validationErrors: false})
+        res.render("professional/login", {layout: './layouts/pro', validationErrors: false})
     },
     postLogin: (req, res, next) => {
         const validationErrors = {emailError: false, passwordError: false}
@@ -90,7 +86,8 @@ module.exports = {
             validationErrors.passwordError = true;
 
         if (Object.values(validationErrors).indexOf(true) > -1) {
-            res.render('login', {
+            res.render('professional/login', {
+                layout: './layouts/pro',
                 validationErrors,
                 email: req.body.email
             })
@@ -108,7 +105,7 @@ module.exports = {
                         return next(err);
                     }
                     req.flash("success", { msg: "Success! You are logged in." });
-                    res.redirect(req.session.returnTo || "/professional");
+                    res.redirect(req.session.returnTo || "/pro");
                 });
             })(req, res, next);
         }
@@ -123,7 +120,7 @@ module.exports = {
 
           req.session.regenerate(function (err) {
             if (err) next(err)
-            res.redirect('/professional')
+            res.redirect('/pro')
           })
         })
     },

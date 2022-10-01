@@ -1,14 +1,13 @@
 const validator = require('validator')
 const zipcodes = require('zipcodes')
-const cloudinary = require("../middleware/cloudinary");
-const Project = require('../models/Project')
-const user = require('./user')
+const cloudinary = require("../../middleware/cloudinary");
+const Project = require('../../models/Project')
 
 module.exports = {
     getProjects: async (req, res) => {
         try {
             const projects = await Project.find({user: req.user.id}).sort({ createdAt: "desc" }).lean();
-            res.render("projects/index", {
+            res.render("homeowner/projects/index", {
                 isLoggedIn: req.isAuthenticated(),
                 projects
             })
@@ -19,7 +18,7 @@ module.exports = {
     getProject: async (req, res) => {
         try {
             const project = await Project.findById(req.params.id).lean();
-            res.render("projects/single", {
+            res.render("homeowner/projects/single", {
                 isLoggedIn: req.isAuthenticated(),
                 project
             })
@@ -28,7 +27,7 @@ module.exports = {
         }
     },
     getAdd: (req, res) => {
-        res.render("projects/add", {
+        res.render("homeowner/projects/add", {
             isLoggedIn: req.isAuthenticated(),
         })
     },
@@ -61,7 +60,6 @@ module.exports = {
 
         let photos = []
         if(req.files.length > 1){
-            console.log('hi')
             for (let i = 0; i < req.files.length; i++) {
                 // Upload image to cloudinary
                 const result = await cloudinary.uploader.upload(req.files[i].path)
@@ -71,7 +69,7 @@ module.exports = {
 
         if (Object.values(validationErrors).indexOf(true) > -1) {
             if(errors.length > 0) req.flash("errors", errors)
-            res.render('projects/add', {
+            res.render('homeowner/projects/add', {
                 validationErrors,
                 category,
                 title,
