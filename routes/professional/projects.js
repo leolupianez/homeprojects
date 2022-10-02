@@ -9,5 +9,6 @@ router.get('/:id', ensureAuth, ensureProfessional, proProjectsController.getProj
 router.get('/all', ensureAuth, ensureProfessional, proProjectsController.getAllProjects)
 router.post('/addZip', ensureAuth, ensureProfessional, proProjectsController.addZip)
 router.delete('/removeZip', ensureAuth, ensureProfessional, proProjectsController.removeZip)
+router.post('/addComment/:id', ensureAuth, ensureProfessional, proProjectsController.addComment)
 
 module.exports = router;
