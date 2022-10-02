@@ -22,9 +22,9 @@
 <% if(projects.length > 0){ %>
     <% projects.forEach(project => { %>
         <div class="mr-5 card w-96 bg-base-100 shadow-xl">
-            <figure><a href="/projects/<%= project._id %>"><img class="object-cover h-48 w-96" src="<%= project.images.length > 0 ? project.images[0] : '/images/missing-image.jpg' %>" alt="<%= project.title %>" /></a></figure>
+            <figure><a href="/pro/projects/<%= project._id %>"><img class="object-cover h-48 w-96" src="<%= project.images.length > 0 ? project.images[0] : '/images/missing-image.jpg' %>" alt="<%= project.title %>" /></a></figure>
             <div class="card-body">
-                <h2 class="card-title"><a href="/projects/<%= project._id %>" class="font-bold">
+                <h2 class="card-title"><a href="/pro/projects/<%= project._id %>" class="font-bold">
                     <%= project.title %></a>
                     <div class="badge badge-secondary"><%= project.category.charAt(0).toUpperCase()
                         + project.category.slice(1) %></div>
