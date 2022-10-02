@@ -98,12 +98,30 @@ module.exports = {
         })
     },
     addComment: async (req, res) => {
-        const comment = new Comment({ comment: req.body.comment, userId: req.user.id, projectId: req.params.id })
-        comment.save(err => {
-            if(err){
-                return next(err)
-            }
-            res.redirect(`/pro/projects/${req.params.id}`)
-        })
+        try {
+            const comment = new Comment({ comment: req.body.comment, userId: req.user.id, projectId: req.params.id })
+            comment.save(err => {
+                if(err){
+                    return next(err)
+                }
+                res.redirect(`/pro/projects/${req.params.id}`)
+            })
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    removeComment: async (req, res) => {
+        try {
+            const comment = await Comment.findById(req.params.id)
+            const projectId  = comment.projectId
+            await comment.remove(err => {
+                if(err){
+                    return next(err)
+                }
+                res.redirect(`/pro/projects/${projectId}`)
+            })
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
