@@ -44,7 +44,14 @@
                 <p class="mt-4 text-md text-gray-600"><%= comment.comment %></p>
             </div>
         <% } else { %>
-            <p class="mt-4 text-md text-gray-600">You have not added a comment yet.</p>
+            <form action="/pro/projects/addComment/<%=project._id%>" method="POST" class="col-3">
+                <div class="form-control">
+                    <textarea id="comment" name="comment" class="textarea textarea-bordered" placeholder="Comment"></textarea>
+                </div>
+                <div class="form-control mt-6">
+                    <button class="btn btn-primary">Add Comment</button>
+                </div>
+            </form>
         <% } %> 
     </div>
 </div>

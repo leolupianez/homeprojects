@@ -19,7 +19,7 @@ module.exports = {
     getProject: async (req, res) => {
         try {
             const project = await Project.findById(req.params.id).lean();
-            const comment = await Comment.findOne({userId: req.user.id}).lean();
+            const comment = await Comment.findOne({userId: req.user.id, projectId: req.params.id}).lean();
             res.render("professional/projects/single", {
                 layout: './layouts/pro',
                 isLoggedIn: req.isAuthenticated(),
@@ -95,6 +95,15 @@ module.exports = {
                     res.json('Removed')
                 })
             }
+        })
+    },
+    addComment: async (req, res) => {
+        const comment = new Comment({ comment: req.body.comment, userId: req.user.id, projectId: req.params.id })
+        comment.save(err => {
+            if(err){
+                return next(err)
+            }
+            res.redirect(`/pro/projects/${req.params.id}`)
         })
     }
 }
