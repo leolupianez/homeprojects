@@ -1,5 +1,6 @@
 const Project = require('../../models/Project')
 const User = require('../../models/User')
+const Comment = require('../../models/Comment')
 const zipcodes = require('zipcodes')
 
 module.exports = {
@@ -14,6 +15,21 @@ module.exports = {
             viewAll: false,
             projects
         })
+    },
+    getProject: async (req, res) => {
+        try {
+            const project = await Project.findById(req.params.id).lean();
+            const comment = await Comment.findOne({userId: req.user.id}).lean();
+            res.render("professional/projects/single", {
+                layout: './layouts/pro',
+                isLoggedIn: req.isAuthenticated(),
+                project,
+                comment,
+                company: req.user.company.companyName
+            })
+          } catch (err) {
+            console.log(err);
+        }
     },
     getAllProjects: async (req, res) => {
         const user = await User.findById(req.user.id).lean()
