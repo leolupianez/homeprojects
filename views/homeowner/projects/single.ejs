@@ -1,7 +1,7 @@
 <div class="card bg-base-100 shadow-xl">
     <div class="card-body">
         <h2 class="card-title"><%= project.title %></h2>
-        <p><%= project.description %></p>
+        <p class="mt-4 text-md text-gray-600"><%= project.description %></p>
         <% if(project.images.length > 0){ %>
             <div class="divider"></div>
             <h3 class="font-bold uppercase">Photos</h3>
@@ -24,5 +24,32 @@
             </div>
             <% } %>
         <% } %>
+    </div>
+</div>
+
+<div class="card bg-base-100 shadow-xl my-5">
+    <div class="card-body">
+        <h2 class="card-title">Comments</h2>
+        <% if(comments.length > 0){ %>
+            <% comments.forEach((comment,i, arr) => { %>
+                <div class="py-5">
+                    <div class="flex items-center flex-1 font-bold leading-tight">
+                        <div class="avatar placeholder pr-4">
+                            <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                <span class="text-3xl"><%= comment.userId.company.companyName.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
+                            </div>
+                        </div>
+                        <%= comment.userId.company.companyName %>
+                        <span class="pl-4 text-xs font-normal text-gray-500"><%= project.createdAt.toLocaleString() %></span>
+                    </div>
+                    <p class="mt-4 text-md text-gray-600"><%= comment.comment %></p>
+                </div>
+                <% if(arr.length > 0 && i != arr.length - 1){ %>
+                    <div class="divider"></div>
+                <% } %>
+            <% }) %>
+        <% } else { %>
+            <p class="mt-4 text-md text-gray-600">No comments yet.</p>
+        <% } %> 
     </div>
 </div>
