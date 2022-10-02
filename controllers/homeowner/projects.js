@@ -2,6 +2,7 @@ const validator = require('validator')
 const zipcodes = require('zipcodes')
 const cloudinary = require("../../middleware/cloudinary");
 const Project = require('../../models/Project')
+const Comment = require('../../models/Comment')
 
 module.exports = {
     getProjects: async (req, res) => {
@@ -18,9 +19,12 @@ module.exports = {
     getProject: async (req, res) => {
         try {
             const project = await Project.findById(req.params.id).lean();
+            const comments = await Comment.find({projectId: req.params.id}).sort({ createdAt: "desc" }).populate('userId').lean();
+
             res.render("homeowner/projects/single", {
                 isLoggedIn: req.isAuthenticated(),
-                project
+                project,
+                comments
             })
           } catch (err) {
             console.log(err);
