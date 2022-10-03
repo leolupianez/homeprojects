@@ -1,15 +1,15 @@
-const passport = require("passport");
+const passport = require("passport")
 const validator = require("validator")
+const cloudinary = require("../../middleware/cloudinary")
 const User = require('../../models/User')
 
 module.exports = {
     getRegister: (req, res) => {
         res.render("professional/register", {layout: './layouts/pro', validationErrors: false})
     },
-    postRegister: (req, res, next) => {    
+    postRegister: async (req, res, next) => {    
         const { firstName, lastName, companyName, companyPhone, email, password, confirmPassword } = req.body;
         const validationErrors = {emailTakenError: false, emailError: false, phoneError: false, passwordError: false, confirmError: false};
-        
         // Not a valid email
         if (!validator.isEmail(email))
             validationErrors.emailError = true;
@@ -36,7 +36,10 @@ module.exports = {
                 confirmPassword, 
             });
         }else {
-            const user = new User({firstName, lastName, email, password, isProfessional: true, company: {companyName, logo: 'test', phoneNumber: companyPhone} })
+
+            const logoUpload = req.file ? await cloudinary.uploader.upload(req.file.path) : 'None'
+
+            const user = new User({firstName, lastName, email, password, isProfessional: true, company: {companyName, logo: logoUpload.secure_url, cloudinaryId: logoUpload.public_id, phoneNumber: companyPhone} })
 
             User.findOne({email: email}, (err, existingUser) => {
                 if(err){

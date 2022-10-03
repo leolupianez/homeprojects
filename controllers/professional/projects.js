@@ -25,7 +25,7 @@ module.exports = {
                 isLoggedIn: req.isAuthenticated(),
                 project,
                 comment,
-                company: req.user.company.companyName
+                company: req.user.company
             })
           } catch (err) {
             console.log(err);
@@ -86,7 +86,6 @@ module.exports = {
             }
             const index = user.company.zipCodes.indexOf(req.body.zipCode)
             if (index > -1) {
-                console.log('hi')
                 user.company.zipCodes.splice(index, 1)
                 user.save(err => {
                     if(err){
