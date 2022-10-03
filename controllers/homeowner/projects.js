@@ -63,7 +63,7 @@ module.exports = {
         }
 
         let photos = []
-        if(req.files.length > 1){
+        if(req.files){
             for (let i = 0; i < req.files.length; i++) {
                 // Upload image to cloudinary
                 const result = await cloudinary.uploader.upload(req.files[i].path)
