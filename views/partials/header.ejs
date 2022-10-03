@@ -1,4 +1,4 @@
-<header class="bg-base-100 shadow-sm">
+<header class="shadow-sm">
     <div class="container mx-auto">
         <div class="navbar">
             <div class="navbar-start">
@@ -9,7 +9,7 @@
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
                             <li><a href="/projects">My Projects</a></li>
-                            <li><a href="/profile">Profile</a></li>
+                            <!-- <li><a href="/profile">Profile</a></li> -->
                             <li><a href="/logout">Logout</a></li>
                         <% } else { %>
                             <li><a href="/register">Sign Up</a></li>
@@ -18,13 +18,18 @@
                         <% } %>
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl"><img class="mw-10" src="/images/logo.png" alt="HomeServices"></a>
+                <a href="/">
+                    <div class="font-title text-primary inline-flex text-lg md:text-3xl">
+                        <span>Home</span> 
+                        <span class="text-base-content">Projects</span>
+                    </div>
+                </a>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
                     <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
                         <li><a href="/projects">My Projects</a></li>
-                        <li><a href="/profile">Profile</a></li>
+                        <!-- <li><a href="/profile">Profile</a></li> -->
                         <li><a href="/logout">Logout</a></li>
                     <% } else { %>
                         <li><a href="/register">Sign Up</a></li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="bg-gray-100" data-theme="emerald" lang="en">
+<html data-theme="emerald" lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,13 +11,14 @@
         <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-        <%- include('../partials/header-pro.ejs') %>
-        <%- include('../partials/errors.ejs') %>
-        <div class="container mx-auto py-5">
-            <%- body %>
+        <div class="flex flex-col h-screen">
+            <%- include('../partials/header-pro.ejs') %>
+            <%- include('../partials/errors.ejs') %>
+            <div class="grow">
+                <%- body %>
+            </div>
+            <%- include('../partials/footer.ejs') %>
         </div>
-        <%- include('../partials/footer.ejs') %>
-
         <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
         <script src="/js/main.js"></script>
     </body>
