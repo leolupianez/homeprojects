@@ -6,9 +6,7 @@ module.exports = {
     getRegister: (req, res) => {
         res.render("homeowner/register", {validationErrors: false})
     },
-    postRegister: (req, res, next) => {
-        console.log(req.body)
-    
+    postRegister: (req, res, next) => {    
         const { firstName, lastName, email, password, confirmPassword } = req.body;
         const validationErrors = {emailTakenError: false, emailError: false, passwordError: false, confirmError: false};
         

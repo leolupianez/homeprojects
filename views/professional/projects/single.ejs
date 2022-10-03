@@ -35,10 +35,14 @@
                 <div class="flex items-center flex-1 font-bold leading-tight">
                     <div class="avatar placeholder pr-4">
                         <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
-                            <span class="text-3xl"><%= company.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
+                            <% if(company.logo){ %>
+                            <img src="<%= company.logo %>" />
+                            <% } else { %>
+                            <span class="text-3xl"><%= company.companyName.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
+                            <% } %>
                         </div>
                     </div>
-                    <%= company %>
+                    <%= company.companyName %>
                     <span class="pl-4 text-xs font-normal text-gray-500"><%= project.createdAt.toLocaleString() %></span>
                 </div>
                 <div class="float-right">

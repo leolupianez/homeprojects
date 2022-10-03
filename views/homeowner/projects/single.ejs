@@ -36,7 +36,11 @@
                     <div class="flex items-center flex-1 font-bold leading-tight">
                         <div class="avatar placeholder pr-4">
                             <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                <%  if(comment.userId.company.logo){ %>
+                                <img src="<%= comment.userId.company.logo %>" />
+                                <% } else { %>
                                 <span class="text-3xl"><%= comment.userId.company.companyName.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
+                                <% } %>
                             </div>
                         </div>
                         <%= comment.userId.company.companyName %>

@@ -8,6 +8,9 @@ const subCompanySchema = mongoose.Schema({
     logo: {
         type: String,
     },
+    cloudinaryId: {
+        type: String,
+    },
     phoneNumber: {
         type: String,
     },
