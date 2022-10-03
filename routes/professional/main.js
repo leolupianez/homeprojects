@@ -5,7 +5,7 @@ const {ensureAuth, ensureProfessional, ensureGuest} = require('../../middleware/
 const indexController = require('../../controllers/index')
 const proAuthController = require('../../controllers/professional/auth')
 
-router.get('/', ensureProfessional, indexController.getProIndex)
+router.get('/', ensureGuest, indexController.getProIndex)
 router.get('/login', ensureGuest, proAuthController.getLogin)
 router.post('/login', ensureGuest, proAuthController.postLogin)
 router.get('/register', ensureGuest, proAuthController.getRegister)

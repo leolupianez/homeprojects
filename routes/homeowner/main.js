@@ -4,7 +4,7 @@ const {ensureGuest, ensureHomeowner, ensureAuth} = require('../../middleware/aut
 const indexController = require('../../controllers/index')
 const homeownerController = require('../../controllers/homeowner/auth')
 
-router.get('/', ensureHomeowner, indexController.getIndex)
+router.get('/', ensureGuest, indexController.getIndex)
 router.get('/login', ensureGuest, homeownerController.getLogin)
 router.post('/login', ensureGuest, homeownerController.postLogin)
 router.get('/register', ensureGuest, homeownerController.getRegister)

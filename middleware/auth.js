@@ -24,7 +24,12 @@ module.exports = {
       if (!req.isAuthenticated()) {
         return next();
       } else {
-        res.redirect("/")
+        if(req.user.isProfessional){
+          res.redirect("/pro/projects")
+        }else{
+          res.redirect("/projects")
+        }
+        
       }
     },
 }

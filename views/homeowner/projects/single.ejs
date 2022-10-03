@@ -1,59 +1,61 @@
-<div class="card bg-base-100 shadow-xl">
-    <div class="card-body">
-        <h2 class="card-title"><%= project.title %></h2>
-        <p class="mt-4 text-md text-gray-600"><%= project.description %></p>
-        <% if(project.images.length > 0){ %>
-            <div class="divider"></div>
-            <h3 class="font-bold uppercase">Photos</h3>
-            <div class="carousel carousel-center p-4 space-x-4 rounded-box">
-                <% for(let i = 1; i <= project.images.length; i++){ %>
-                    <div id="item<%=i%>" class="carousel-item w-1/2">
-                        <a href="#modal-<%=i%>"><img src="<%=project.images[i-1]%>" class="rounded-box" /></a>
-                    </div>
-                <% } %>
-            </div>
-
-            <% for(let i = 1; i <= project.images.length; i++){ %>
-            <div class="modal" id="modal-<%=i%>">
-                <div class="modal-box w-11/12 max-w-5xl">
-                    <img src="<%=project.images[i-1]%>" class="w-full" />
-                    <div class="modal-action">
-                        <a href="#" class="btn">Close</a>
-                    </div>
-                </div>
-            </div>
-            <% } %>
-        <% } %>
-    </div>
-</div>
-
-<div class="card bg-base-100 shadow-xl my-5">
-    <div class="card-body">
-        <h2 class="card-title">Comments</h2>
-        <% if(comments.length > 0){ %>
-            <% comments.forEach((comment,i, arr) => { %>
-                <div class="py-5">
-                    <div class="flex items-center flex-1 font-bold leading-tight">
-                        <div class="avatar placeholder pr-4">
-                            <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
-                                <%  if(comment.userId.company.logo){ %>
-                                <img src="<%= comment.userId.company.logo %>" />
-                                <% } else { %>
-                                <span class="text-3xl"><%= comment.userId.company.companyName.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
-                                <% } %>
-                            </div>
+<div class="container mx-auto py-5">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title"><%= project.title %></h2>
+            <p class="mt-4 text-md text-gray-600"><%= project.description %></p>
+            <% if(project.images.length > 0){ %>
+                <div class="divider"></div>
+                <h3 class="font-bold uppercase">Photos</h3>
+                <div class="carousel carousel-center p-4 space-x-4 rounded-box">
+                    <% for(let i = 1; i <= project.images.length; i++){ %>
+                        <div id="item<%=i%>" class="carousel-item w-1/2">
+                            <a href="#modal-<%=i%>"><img src="<%=project.images[i-1]%>" class="rounded-box" /></a>
                         </div>
-                        <%= comment.userId.company.companyName %>
-                        <span class="pl-4 text-xs font-normal text-gray-500"><%= project.createdAt.toLocaleString() %></span>
-                    </div>
-                    <p class="mt-4 text-md text-gray-600"><%= comment.comment %></p>
+                    <% } %>
                 </div>
-                <% if(arr.length > 0 && i != arr.length - 1){ %>
-                    <div class="divider"></div>
+
+                <% for(let i = 1; i <= project.images.length; i++){ %>
+                <div class="modal" id="modal-<%=i%>">
+                    <div class="modal-box w-11/12 max-w-5xl">
+                        <img src="<%=project.images[i-1]%>" class="w-full" />
+                        <div class="modal-action">
+                            <a href="#" class="btn">Close</a>
+                        </div>
+                    </div>
+                </div>
                 <% } %>
-            <% }) %>
-        <% } else { %>
-            <p class="mt-4 text-md text-gray-600">No comments yet.</p>
-        <% } %> 
+            <% } %>
+        </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl my-5">
+        <div class="card-body">
+            <h2 class="card-title">Comments</h2>
+            <% if(comments.length > 0){ %>
+                <% comments.forEach((comment,i, arr) => { %>
+                    <div class="py-5">
+                        <div class="flex items-center flex-1 font-bold leading-tight">
+                            <div class="avatar placeholder pr-4">
+                                <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                    <%  if(comment.userId.company.logo){ %>
+                                    <img src="<%= comment.userId.company.logo %>" />
+                                    <% } else { %>
+                                    <span class="text-3xl"><%= comment.userId.company.companyName.split(' ').map(w => w[0]).join('').toUpperCase() %></span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <%= comment.userId.company.companyName %>
+                            <span class="pl-4 text-xs font-normal text-gray-500"><%= project.createdAt.toLocaleString() %></span>
+                        </div>
+                        <p class="mt-4 text-md text-gray-600"><%= comment.comment %></p>
+                    </div>
+                    <% if(arr.length > 0 && i != arr.length - 1){ %>
+                        <div class="divider"></div>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+                <p class="mt-4 text-md text-gray-600">No comments yet.</p>
+            <% } %> 
+        </div>
     </div>
 </div>
