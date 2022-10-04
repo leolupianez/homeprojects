@@ -1,19 +1,20 @@
 <div align="center">
-  <h3 align="center">Home Services</h3>
+  <h3 align="center">HomeProjects</h3>
   <p align="center">
-    An app for homeowners to quicky find and connect with home service professionals in their neighborhood.
+    An app for homeowners to post their home projects and connect with home service professionals in their neighborhood.
     <br />
     <br />
-    <a href="#">View</a>
+    <a href="https://puce-grumpy-chicken.cyclic.app/">View</a>
     ·
     <a href="https://github.com/joselupianez/home-services-project/issues">Report Bug</a>
     ·
     <a href="https://github.com/joselupianez/home-services-project/pulls">Request Feature</a>
   </p>
+  <img src="screenshot.png">
 </div>
 
 ## How It's Made:
-Home Services is an app built with the MVC pattern implemented that uses EJS, CSS, NodeJS, Express.JS, MongoDB, and JavaScript. ExpressJS is being used to build the web application and manage the routes. Embedded JavaScript Templates (EJS) are being used to make templates that we can change based on the data being sent from the Controllers before displaying it to the user. Whenever a user creates an account or requests new service, we store that data in a MongoDB database using Model schemas.
+HomeProjects is an app built with the MVC pattern implemented that uses EJS, CSS, NodeJS, Express.JS, MongoDB, and JavaScript. ExpressJS is being used to build the web application and manage the routes. Embedded JavaScript Templates (EJS) are being used to make templates that we can change based on the data being sent from the Controllers before displaying it to the user. Whenever a user creates an account or requests new service, we store that data in a MongoDB database using Model schemas.
 
 
 ## Tech Used:
@@ -21,6 +22,8 @@ Home Services is an app built with the MVC pattern implemented that uses EJS, CS
 [![ExpressJS][Express.JS]][Express.JS]
 [![NodeJS][Node.JS]][Node.JS]
 [![TailwindCSS][Tailwind.CSS]][Tailwind.CSS]
+[![Mongo][MongoDB]][MongoDB]
+
 
 ## Installation
 
@@ -48,3 +51,4 @@ npm run dev
 [Express.JS]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Node.JS]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
 [Tailwind.CSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[MongoDB]: https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
