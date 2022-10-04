@@ -95,5 +95,22 @@ module.exports = {
                 console.error(err)
             }
         }
+    },
+    removeProject: async (req, res, next) => {
+        try {
+            const project = await Project.findById(req.params.id);
+            if(req.user.id == project.user.toString()){
+                await project.remove(err => {
+                    if(err){
+                        return next(err)
+                    }
+                    res.redirect('/projects')
+                })
+            }else{
+                res.redirect('/projects')
+            }
+        } catch (err){
+            console.error(err)
+        }
     }
 }
