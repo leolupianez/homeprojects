@@ -27,9 +27,11 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="/pro/projects/<%= project._id %>" class="font-bold">
                         <%= project.title %></a>
-                        <div class="badge badge-secondary"><%= project.category.charAt(0).toUpperCase()
-                            + project.category.slice(1) %></div>
                     </h2>
+                    <div class="flex gap-2">
+                        <div class="badge badge-secondary"><%= project.category.charAt(0).toUpperCase() + project.category.slice(1) %></div>
+                        <div class="badge badge-neutral"><%= project.zipCode %></div>
+                    </div>
                     <p><%= project.description %></p>
                     <span class="py-3 text-xs"><%= project.createdAt.toLocaleString() %></span>
                 </div>
