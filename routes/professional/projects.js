@@ -10,6 +10,8 @@ router.post('/addZip', ensureAuth, ensureProfessional, proProjectsController.add
 router.delete('/removeZip', ensureAuth, ensureProfessional, proProjectsController.removeZip)
 router.post('/addComment/:id', ensureAuth, ensureProfessional, proProjectsController.addComment)
 router.delete('/removeComment/:id', ensureAuth, ensureProfessional, proProjectsController.removeComment)
+router.post('/addReply/:id', ensureAuth, ensureProfessional, proProjectsController.addReply)
+router.delete('/:commentId/removeReply/:replyId', ensureAuth, ensureProfessional, proProjectsController.removeReply)
 router.get('/:id', ensureAuth, ensureProfessional, proProjectsController.getProject)
 
 module.exports = router;
