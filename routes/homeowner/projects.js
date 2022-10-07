@@ -10,6 +10,8 @@ router.post('/add', ensureAuth, ensureHomeowner, upload.array('photos', 10), pro
 router.delete('/delete/:id', ensureAuth, ensureHomeowner, projectsController.removeProject)
 router.get('/edit/:id', ensureAuth, ensureHomeowner, projectsController.editProject)
 router.put('/edit/:id', ensureAuth, ensureHomeowner, upload.array('photos', 10), projectsController.updateProject)
+router.post('/addReply/:id', ensureAuth, ensureHomeowner, projectsController.addReply)
+router.delete('/:commentId/removeReply/:replyId', ensureAuth, ensureHomeowner, projectsController.removeReply)
 router.get('/:id', ensureAuth, ensureHomeowner, projectsController.getProject)
 
 module.exports = router;

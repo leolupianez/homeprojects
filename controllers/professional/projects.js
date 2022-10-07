@@ -19,7 +19,8 @@ module.exports = {
     getProject: async (req, res) => {
         try {
             const project = await Project.findById(req.params.id).lean();
-            const comment = await Comment.findOne({userId: req.user.id, projectId: req.params.id}).lean();
+            const comment = await Comment.findOne({userId: req.user.id, projectId: req.params.id}).populate('replies.userId').lean();
+
             res.render("professional/projects/single", {
                 layout: './layouts/pro',
                 isLoggedIn: req.isAuthenticated(),
@@ -119,6 +120,34 @@ module.exports = {
                 }
                 res.redirect(`/pro/projects/${projectId}`)
             })
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    addReply: async (req, res) => {
+        try {
+            const comment = await Comment.findById(req.params.id)
+            if(comment){
+                comment.replies.push({reply: req.body.reply, userId: req.user.id})
+                await comment.save()
+                req.flash("success", { msg: "Success! Your reply has been submitted." });
+                res.redirect(`/pro/projects/${comment.projectId}`)
+            }else{
+                res.redirect('/pro/projects')
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    removeReply: async (req, res) => {
+        try {
+            console.log(req.params)
+            const comment = await Comment.findByIdAndUpdate(req.params.commentId, { 
+                '$pull': {
+                    'replies': {'_id': req.params.replyId }
+                }
+            })
+            res.redirect(`/pro/projects/${comment.projectId}`)
         } catch (err) {
             console.error(err)
         }

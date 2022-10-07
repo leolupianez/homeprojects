@@ -19,7 +19,12 @@ module.exports = {
     getProject: async (req, res) => {
         try {
             const project = await Project.findById(req.params.id).lean();
-            const comments = await Comment.find({projectId: req.params.id}).sort({ createdAt: "desc" }).populate('userId').lean();
+            const comments = await Comment
+            .find({projectId: req.params.id})
+            .sort({ createdAt: "desc" })
+            .populate('userId')
+            .populate('replies.userId')
+            .lean()
 
             res.render("homeowner/projects/single", {
                 isLoggedIn: req.isAuthenticated(),
@@ -199,6 +204,33 @@ module.exports = {
             }
         } catch (err){
             console.log(err)
+        }
+    },
+    addReply: async (req, res) => {
+        try {
+            const comment = await Comment.findById(req.params.id)
+            if(comment){
+                comment.replies.push({reply: req.body.reply, userId: req.user.id})
+                await comment.save()
+                req.flash("success", { msg: "Success! Your reply has been submitted." });
+                res.redirect(`/projects/${comment.projectId}`)
+            }else{
+                res.redirect('/projects')
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    removeReply: async (req, res) => {
+        try {
+            const comment = await Comment.findByIdAndUpdate(req.params.commentId, { 
+                '$pull': {
+                    'replies': {'_id': req.params.replyId }
+                }
+            })
+            res.redirect(`/projects/${comment.projectId}`)
+        } catch (err) {
+            console.error(err)
         }
     }
 }
