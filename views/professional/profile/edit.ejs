@@ -1,0 +1,67 @@
+<div class="container mx-auto py-5">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Edit Profile</h2>
+            <form enctype="multipart/form-data" action="/pro/profile/edit" method="POST">
+                <div class="form-control">
+                    <label for="firstName" class="label">
+                        <span class="label-text">First Name</span>
+                    </label>
+                    <input type="text" name="firstName" id="firstName" class="input input-bordered" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="lastName" class="label">
+                        <span class="label-text">Last Name</span>
+                    </label>
+                    <input type="text" name="lastName" id="lastName" class="input input-bordered" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="logo" class="label">
+                        <span class="label-text">Company Logo</span>
+                    </label>
+                    <input type="file" id="logo" name="logo" class="block w-full text-sm text-gray-900 rounded-lg border border-gray-300 cursor-pointer focus:outline-none">
+                </div>
+                <div class="form-control">
+                    <label for="companyName" class="label">
+                        <span class="label-text">Company Name</span>
+                    </label>
+                    <input type="text" name="companyName" id="companyName" class="input input-bordered" placeholder="Company name" value="<%= typeof companyName != 'undefined' ? companyName : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="companyPhone" class="label">
+                        <span class="label-text">Company Phone</span>
+                    </label>
+                    <input type="text" name="companyPhone" id="companyPhone" class="input input-bordered <%= validationErrors.phoneError ? 'input-error' : '' %>"" placeholder="Company phone" value="<%= typeof companyPhone != 'undefined' ? companyPhone : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="email" class="label">
+                        <span class="label-text">Company Email</span>
+                    </label>
+                    <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="password" class="label">
+                        <span class="label-text">Current Password</span>
+                    </label>
+                    <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="newPassword" class="label">
+                        <span class="label-text">New Password</span>
+                    </label>
+                    <input type="password" name="newPassword" class="input input-bordered <%= validationErrors.newPasswordError ? 'input-error' : '' %>" id="newPassword" placeholder="*******" value="<%= typeof newPassword != 'undefined' ? newPassword : '' %>">
+                </div>
+                <div class="form-control">
+                    <label for="confirmNewPassword" class="label">
+                        <span class="label-text">Confirm New Password</span>
+                    </label>
+                    <input type="password" name="confirmNewPassword" class="input input-bordered <%= validationErrors.confirmNewPasswordError ? 'input-error' : '' %>" id="confirmNewPassword" placeholder="*******" value="<%= typeof confirmNewPassword != 'undefined' ? confirmNewPassword : '' %>">
+                </div>
+
+                <div class="form-control mt-6">
+                    <button class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

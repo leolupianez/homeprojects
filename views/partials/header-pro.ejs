@@ -9,7 +9,7 @@
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
                             <li><a href="/projects">Projects</a></li>
-                            <!-- <li><a href="/profile">Profile</a></li> -->
+                            <li><a href="/pro/profile">Profile</a></li>
                             <li><a href="/pro/logout">Logout</a></li>
                         <% } else { %>
                             <li><a href="/pro/register">Sign Up</a></li>
@@ -29,7 +29,7 @@
                 <ul class="menu menu-horizontal p-0">
                     <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
                         <li><a href="/pro/projects">Projects</a></li>
-                        <!-- <li><a href="/pro/profile">Profile</a></li> -->
+                        <li><a href="/pro/profile">Profile</a></li>
                         <li><a href="/pro/logout">Logout</a></li>
                     <% } else { %>
                         <li><a href="/pro/register">Sign Up</a></li>
