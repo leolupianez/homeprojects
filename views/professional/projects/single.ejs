@@ -66,7 +66,7 @@
                                         <% } %>
                                     </div>
                                 </div>
-                                <%= arr.userId.isProfessional ? company.companyName : 'A Homeowner' %>
+                                <%= arr.userId.isProfessional ? company.companyName : arr.userId.connections.map(n=>n.toString()).includes(comment.userId.toString()) ? arr.userId.firstName + ' ' + arr.userId.lastName : 'A Homeowner' %>
                                 <span class="pl-4 text-xs font-normal text-gray-500"><%= arr.createdAt.toLocaleString() %></span>
                             </div>
                             <% if(arr.userId.isProfessional){ %>
