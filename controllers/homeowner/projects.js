@@ -18,18 +18,20 @@ module.exports = {
     },
     getProject: async (req, res) => {
         try {
-            const project = await Project.findById(req.params.id).lean();
+            const project = await Project.findById(req.params.id).populate('user').lean()
+            const connections = project.user.connections.map(n => n.toString())
             const comments = await Comment
-            .find({projectId: req.params.id})
-            .sort({ createdAt: "desc" })
-            .populate('userId')
-            .populate('replies.userId')
-            .lean()
-
+                .find({projectId: req.params.id})
+                .sort({ createdAt: "desc" })
+                .populate('userId')
+                .populate('replies.userId')
+                .lean()
+            
             res.render("homeowner/projects/single", {
                 isLoggedIn: req.isAuthenticated(),
                 project,
-                comments
+                comments,
+                connections
             })
           } catch (err) {
             console.log(err);

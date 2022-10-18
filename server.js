@@ -17,6 +17,8 @@ const homeownerProfileRoutes = require('./routes/homeowner/profile')
 const proMainRoutes = require('./routes/professional/main')
 const proProjectsRoutes = require('./routes/professional/projects')
 const proProfileRoutes = require('./routes/professional/profile')
+// Connect Routes
+const connectRoutes = require('./routes/connect')
 
 // Load environment variables
 require('dotenv').config({ path: "./config/.env" })
@@ -71,6 +73,7 @@ app.use("/profile", homeownerProfileRoutes)
 app.use("/pro", proMainRoutes)
 app.use("/pro/projects", proProjectsRoutes)
 app.use("/pro/profile", proProfileRoutes)
+app.use("/connect", connectRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}.`)
