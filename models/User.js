@@ -37,6 +37,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    connections: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     isProfessional: {
         type: Boolean,
         default: false

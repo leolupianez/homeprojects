@@ -5,16 +5,16 @@ const bcrypt = require('bcrypt')
 
 module.exports = {
     getUserProfile: async (req, res) => {      
-        const {firstName, lastName, email} = req.user
-
+        const user = await User.findById(req.user.id).populate('connections')
         const projects = await Project.find({user: req.user.id}).lean()
+
         res.render("homeowner/profile/index", {
             isLoggedIn: req.isAuthenticated(),
-            firstName,
-            lastName,
-            email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
             projectCount: projects.length,
-            connectionCount: 0
+            connections: user.connections
         })
     },
     getEditProfile: async (req, res) => {
