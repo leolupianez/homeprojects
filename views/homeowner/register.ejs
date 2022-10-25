@@ -1,44 +1,42 @@
 <div class="container mx-auto py-5">
-    <div class="card bg-base-100 shadow-xl">
-        <div class="card-body">
-            <h2 class="card-title">Register</h2>
-            <form action="/register" method="POST">
-                <div class="form-control">
-                    <label for="firstName" class="label">
-                        <span class="label-text">First Name</span>
-                    </label>
-                    <input type="text" name="firstName" id="firstName" class="input input-bordered" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="lastName" class="label">
-                        <span class="label-text">Last Name</span>
-                    </label>
-                    <input type="text" name="lastName" id="lastName" class="input input-bordered" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="email" class="label">
-                        <span class="label-text">Email</span>
-                    </label>
-                    <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="password" class="label">
-                        <span class="label-text">Password</span>
-                    </label>
-                    <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="confirmPassword" class="label">
-                        <span class="label-text">Confirm Password</span>
-                    </label>
-                    <input type="password" name="confirmPassword" class="input input-bordered <%= validationErrors.confirmationError ? 'input-error' : '' %>" id="confirmPassword" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
-                </div>
+    <h1 class="text-3xl font-bold py-3">Register</h1>
+    <section class="flex flex-col gap-2 mb-4">
+        <form action="/register" method="POST">
+            <div class="form-control">
+                <label for="firstName" class="label">
+                    <span class="label-text">First Name</span>
+                </label>
+                <input type="text" name="firstName" id="firstName" class="input input-bordered" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="lastName" class="label">
+                    <span class="label-text">Last Name</span>
+                </label>
+                <input type="text" name="lastName" id="lastName" class="input input-bordered" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="email" class="label">
+                    <span class="label-text">Email</span>
+                </label>
+                <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="password" class="label">
+                    <span class="label-text">Password</span>
+                </label>
+                <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword" class="label">
+                    <span class="label-text">Confirm Password</span>
+                </label>
+                <input type="password" name="confirmPassword" class="input input-bordered <%= validationErrors.confirmationError ? 'input-error' : '' %>" id="confirmPassword" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
+            </div>
 
-                <div class="form-control mt-6">
-                    <button class="btn btn-primary">Register</button>
-                </div>
-            </form>
-            <p class="py-5 text-sm">Are you a professional? <a href="pro/register" class="link">Register as a Pro</a></p>
-        </div>
-    </div>
+            <div class="form-control mt-6">
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        <p class="py-5 text-sm">Are you a professional? <a href="pro/register" class="link">Register as a Pro</a></p>
+    </section>
 </div>
