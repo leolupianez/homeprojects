@@ -10,7 +10,7 @@
                     </form>
                 </div>
             </div>
-            <p class="mt-4 text-md text-gray-600"><%= project.description %></p>
+            <p class="mt-4 text-md"><%= project.description %></p>
             <% if(project.images.length > 0){ %>
                 <div class="divider"></div>
                 <h3 class="font-bold uppercase">Photos</h3>
@@ -33,13 +33,8 @@
                 </div>
                 <% } %>
             <% } %>
-        </div>
-        
-    </div>
-
-    <div class="card bg-base-100 shadow-xl my-5">
-        <div class="card-body">
-            <h2 class="card-title">Comments</h2>
+            <div class="divider"></div>
+            <h3 class="font-bold uppercase">Comments</h3>
             <% if(comments.length > 0){ %>
                 <% comments.forEach((comment,i, arr) => { %>
                     <div class="py-5">
@@ -63,7 +58,7 @@
                                 </form>
                             </div>
                         <% } %>
-                        <p class="mt-4 text-md text-gray-600"><%= comment.comment %></p>
+                        <p class="mt-4 text-md"><%= comment.comment %></p>
 
                         <% if(comment.replies && comment.replies.length > 0){ %>
                             <div class="divider"></div>
@@ -99,7 +94,7 @@
                                         </form>
                                     </div>
                                 <% } %>
-                                <p class="text-md text-gray-600 pl-10"><%= arr.reply %></p>
+                                <p class="text-md pl-10"><%= arr.reply %></p>
                                 <div class="divider pl-10"></div>
                             <% }) %>
                         <% } %>

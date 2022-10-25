@@ -1,56 +1,54 @@
 <div class="container mx-auto py-5">
-    <div class="card bg-base-100 shadow-xl">
-        <div class="card-body">
-            <h2 class="card-title">New Project</h2>
-            <form enctype="multipart/form-data" action="/projects/add" method="POST">
-                <div class="form-control">
-                    <label for="category" class="label">
-                        <span class="label-text">Category</span>
-                    </label>
-                    <select name="category" id="category" class="select select-bordered" required>
-                        <option disabled selected>Service type</option>
-                        <option value="air conditioning" <%= typeof category != 'undefined' && category == 'air conditioning' ? 'selected' : '' %>>Air conditioning</option>
-                        <option value="roofing" <%= typeof category != 'undefined' && category == 'roofing' ? 'selected' : '' %>>Roofing</option>
-                        <option value="plumbing" <%= typeof category != 'undefined' && category == 'plumbing' ? 'selected' : '' %>>Plumbing</option>
-                        <option value="painting" <%= typeof category != 'undefined' && category == 'painting' ? 'selected' : '' %>>Painting</option>
-                        <option value="landscape" <%= typeof category != 'undefined' && category == 'landscape' ? 'selected' : '' %>>Landscape</option>
-                        <option value="electrical" <%= typeof category != 'undefined' && category == 'electrical' ? 'selected' : '' %>>Electrical</option>
-                        <option value="cleaning" <%= typeof category != 'undefined' && category == 'cleaning' ? 'selected' : '' %>>Cleaning</option>
-                        <option value="handyman" <%= typeof category != 'undefined' && category == 'handyman' ? 'selected' : '' %>>Handyman</option>
-                    </select>
-                </div>
-                <div class="form-control">
-                    <label for="title" class="label">
-                        <span class="label-text">Title</span>
-                    </label>
-                    <input type="text" name="title" id="title" class="input input-bordered <%= typeof validationErrors != 'undefined' && validationErrors.titleError ? 'input-error' : '' %>" placeholder="Project title" value="<%= typeof title != 'undefined' ? title : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="zipCode" class="label">
-                        <span class="label-text">Zip code</span>
-                    </label>
-                    <input type="text" name="zipCode" id="zipCode" class="input input-bordered <%= typeof validationErrors != 'undefined' && validationErrors.zipCodeError ? 'input-error' : '' %>" placeholder="Zip code" value="<%= typeof zipCode != 'undefined' ? zipCode : '' %>" required>
-                </div>
-                <div class="form-control">
-                    <label for="description" class="label">
-                        <span class="label-text">Description</span>
-                    </label>
-                    <textarea name="description" id="description" rows="3" class="textarea textarea-bordered h-24 <%= typeof validationErrors != 'undefined' && validationErrors.descriptionError ? 'textarea-error' : '' %>" placeholder="Description" required><%= typeof description != 'undefined' ? description : '' %></textarea>
-                </div>
-                <div class="form-control">
-                    <label for="image-upload" class="label">
-                        <span class="label-text">Add Pictures</span>
-                    </label>
-                    <input type="file" id="image-upload" name="photos" class="block w-full text-sm text-gray-900 rounded-lg border border-gray-300 cursor-pointer focus:outline-none" multiple>
-                </div>
+    <h1 class="text-3xl font-bold py-3">New Profile</h1>
+    <section class="flex flex-col gap-2 mb-4">
+        <form enctype="multipart/form-data" action="/projects/add" method="POST">
+            <div class="form-control">
+                <label for="category" class="label">
+                    <span class="label-text">Category</span>
+                </label>
+                <select name="category" id="category" class="select select-bordered" required>
+                    <option disabled selected>Service type</option>
+                    <option value="air conditioning" <%= typeof category != 'undefined' && category == 'air conditioning' ? 'selected' : '' %>>Air conditioning</option>
+                    <option value="roofing" <%= typeof category != 'undefined' && category == 'roofing' ? 'selected' : '' %>>Roofing</option>
+                    <option value="plumbing" <%= typeof category != 'undefined' && category == 'plumbing' ? 'selected' : '' %>>Plumbing</option>
+                    <option value="painting" <%= typeof category != 'undefined' && category == 'painting' ? 'selected' : '' %>>Painting</option>
+                    <option value="landscape" <%= typeof category != 'undefined' && category == 'landscape' ? 'selected' : '' %>>Landscape</option>
+                    <option value="electrical" <%= typeof category != 'undefined' && category == 'electrical' ? 'selected' : '' %>>Electrical</option>
+                    <option value="cleaning" <%= typeof category != 'undefined' && category == 'cleaning' ? 'selected' : '' %>>Cleaning</option>
+                    <option value="handyman" <%= typeof category != 'undefined' && category == 'handyman' ? 'selected' : '' %>>Handyman</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="title" class="label">
+                    <span class="label-text">Title</span>
+                </label>
+                <input type="text" name="title" id="title" class="input input-bordered <%= typeof validationErrors != 'undefined' && validationErrors.titleError ? 'input-error' : '' %>" placeholder="Project title" value="<%= typeof title != 'undefined' ? title : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="zipCode" class="label">
+                    <span class="label-text">Zip code</span>
+                </label>
+                <input type="text" name="zipCode" id="zipCode" class="input input-bordered <%= typeof validationErrors != 'undefined' && validationErrors.zipCodeError ? 'input-error' : '' %>" placeholder="Zip code" value="<%= typeof zipCode != 'undefined' ? zipCode : '' %>" required>
+            </div>
+            <div class="form-control">
+                <label for="description" class="label">
+                    <span class="label-text">Description</span>
+                </label>
+                <textarea name="description" id="description" rows="3" class="textarea textarea-bordered h-24 <%= typeof validationErrors != 'undefined' && validationErrors.descriptionError ? 'textarea-error' : '' %>" placeholder="Description" required><%= typeof description != 'undefined' ? description : '' %></textarea>
+            </div>
+            <div class="form-control">
+                <label for="image-upload" class="label">
+                    <span class="label-text">Add Pictures</span>
+                </label>
+                <input type="file" id="image-upload" name="photos" class="bg-base-100 text-gray-500 rounded-lg border border-gray-700 cursor-pointer focus:outline-none" multiple>
+            </div>
 
-                
-                <div class="grid gap-x-8 gap-y-4 grid-cols-5 py-3" id="preview"></div>
-                
-                <div class="form-control mt-6">
-                    <button class="btn btn-primary">Add Project</button>
-                </div>
-            </form>
-        </div>
-    </div>
+            
+            <div class="grid gap-x-8 gap-y-4 grid-cols-5 py-3" id="preview"></div>
+            
+            <div class="form-control mt-6">
+                <button class="btn btn-primary">Add Project</button>
+            </div>
+        </form>
+    </section>
 </div>

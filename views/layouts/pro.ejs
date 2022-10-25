@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="emerald" lang="en">
+<html data-theme="night" lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,8 +13,8 @@
     <body>
         <div class="flex flex-col h-screen">
             <%- include('../partials/header-pro.ejs') %>
-            <%- include('../partials/errors.ejs') %>
-            <div class="grow">
+            <div class="grow bg-neutral text-neutral-content">
+                <%- include('../partials/errors.ejs') %>
                 <%- body %>
             </div>
             <%- include('../partials/footer.ejs') %>
