@@ -26,9 +26,6 @@ require('dotenv').config({ path: "./config/.env" })
 // Passport config
 require("./config/passport")(passport);
 
-// Connect To Database
-connectDB();
-
 // EJS Layouts
 app.use(expressLayouts)
 app.set('layout', './layouts/main')
@@ -55,7 +52,7 @@ app.use(
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        store: MongoStore.create({ client: mongoose.connection.getClient() }),
+        store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
     })
 );
   
@@ -75,6 +72,8 @@ app.use("/pro/projects", proProjectsRoutes)
 app.use("/pro/profile", proProfileRoutes)
 app.use("/connect", connectRoutes)
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}.`)
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(`Server is running on port ${process.env.PORT}.`)
+    })
 })
