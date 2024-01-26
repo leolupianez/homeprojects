@@ -1,46 +1,72 @@
-<header class="shadow-sm">
-    <div class="container mx-auto">
-        <div class="navbar">
-            <div class="navbar-start">
-                <div class="dropdown">
-                    <label tabindex="0" class="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                            <li><a href="/projects">My Projects</a></li>
-                            <li><a href="/profile">Profile</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        <% } else { %>
-                            <li><a href="/register">Register</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/pro">Join Pros</a></li>
-                        <% } %>
-                    </ul>
-                </div>
-                <a href="/">
-                    <div class="font-title text-primary inline-flex text-lg md:text-3xl">
-                        <span>Home</span> 
-                        <span class="text-base-content">Projects</span>
-                    </div>
-                </a>
+<header class="absolute inset-x-0 top-0 z-50">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+    <div class="flex lg:flex-1">
+      <a href="/" class="-m-1.5 p-1.5">
+        <img id="logo" class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="">
+      </a>
+    </div>
+    <div class="flex lg:hidden">
+      <button id="show-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+    <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
+        <div class="hidden lg:flex lg:gap-x-12">
+            <a href="/projects" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">My Projects</a>
+            <a href="/profile" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">Profile</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/logout" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">Log out &rarr;</a>
+        </div>
+    <% } else { %>
+        <div class="hidden lg:flex lg:gap-x-12">
+            <a href="/register" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">Register</a>
+            <a href="/login" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">Login</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/pro" class="text-sm font-semibold leading-6 text-white hover:text-indigo-400">Join Pros &rarr;</a>
+        </div>
+    <% } %>
+
+  </nav>
+  <div id="mobile-menu" class="hidden">
+    <div class="fixed inset-0 z-10"></div>
+    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+      <div class="flex items-center justify-between">
+        <a href="#" class="-m-1.5 p-1.5">
+          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="">
+        </a>
+        <button id="close-menu-btn" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-400">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-6 flow-root">
+        <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
+        <div class="-my-6 divide-y divide-gray-500/25">
+          <div class="space-y-2 py-6">
+            <a href="/projects" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">My Projects</a>
+            <a href="/profile" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">Profile</a>
+          </div>
+          <div class="py-6">
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">Log out</a>
+          </div>
+        </div>
+        <% } else { %>
+        <div class="-my-6 divide-y divide-gray-500/25">
+            <div class="space-y-2 py-6">
+                <a href="/register" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">Register</a>
+                <a href="/login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">Login</a>
             </div>
-            <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal p-0">
-                    <% if(typeof isLoggedIn != 'undefined' && isLoggedIn){ %>
-                        <li><a href="/projects">My Projects</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    <% } else { %>
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/pro">Join Pros</a></li>
-                    <% } %>
-                </ul>
-            </div>
-            <div class="navbar-end">
-                <a href="/projects/add" class="btn">New Project</a>
+            <div class="py-6">
+                <a href="/pro" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">Join Pros</a>
             </div>
         </div>
+        <% } %>
+      </div>
     </div>
+  </div>
 </header>

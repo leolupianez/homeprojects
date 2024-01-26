@@ -1,4 +1,58 @@
-<div class="container mx-auto py-5">
+<div class="mx-auto max-w-7xl lg:px-8">
+    <div class="overflow-hidden bg-white sm:rounded-lg sm:shadow">
+        <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+            <h3 class="text-base font-semibold leading-6 text-gray-900">Projects</h3>
+        </div>
+        <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+            <% if(zipCodes.length > 0){ %>
+                <h4 class="text-base py-3"> My ZIP Codes:
+                <% zipCodes.forEach(zipCode => { %>
+                    <span class="badge badge-primary badge-outline zipcode cursor-pointer"><%= zipCode %></span>
+                <% }) %>
+                </h4>
+            <% } %>
+            <form action="/pro/projects/addZip" method="POST" class="col-3">
+                <div class="form-control">
+                    <div class="input-group">
+                    <input type="text" name="zip" placeholder="Add ZIP Code" class="input input-bordered border-r-0" />
+                    <button class="btn btn-square btn-primary">
+                        Add    
+                    </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <% if(projects.length > 0){ %>
+            <ul role="list" class="divide-y divide-gray-200">
+                <% projects.forEach(project => { %>
+                    <li>
+                        <a href="/pro/projects/<%= project._id %>" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="truncate text-sm font-medium text-indigo-600"><%= project.title %></div>
+                                    <div class="ml-2 flex flex-shrink-0">
+                                        <span class="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-600 ring-1 ring-inset ring-green-600/20"><%= project.category.charAt(0).toUpperCase() + project.category.slice(1) %></span>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex justify-between">
+                                    <div class="sm:flex">
+                                        <p class="text-xs text-gray-500"><%= project.createdAt.toLocaleString() %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p class="py-10 text-center text-gray-400">No projects for the selected zip codes yet.</p>
+        <% } %>
+        <a class="btn btn-primary" href="/pro/projects/<%= viewAll ? '' : 'all' %>"><%= viewAll ? 'View Selected Zip Codes' : 'View All Zip Codes' %></a>
+
+    </div>
+</div>
+
+<!-- <div class="container mx-auto py-5">
     <h1 class="text-5xl font-bold py-6">Projects</h1>
     <% if(zipCodes.length > 0){ %>
         <h4 class="text-base py-3"> My ZIP Codes:
@@ -44,4 +98,4 @@
     </div>
 
     <a class="btn btn-primary" href="/pro/projects/<%= viewAll ? '' : 'all' %>"><%= viewAll ? 'View Selected Zip Codes' : 'View All Zip Codes' %></a>
-</div>
+</div> -->

@@ -50,3 +50,18 @@ const zipCodes = document.querySelectorAll('.badge.zipcode');
 zipCodes.forEach(zip => {
   zip.addEventListener('click', removeZip)
 })
+
+
+function closeOpenMenu() {
+  const menuClosed = document.querySelector('#mobile-menu').classList.contains('hidden')
+  if(menuClosed) {
+    document.querySelector('#mobile-menu').classList.remove('hidden')
+    document.querySelector('#logo').classList.add('hidden')
+  } else {
+    document.querySelector('#mobile-menu').classList.add('hidden')
+    document.querySelector('#logo').classList.remove('hidden')
+  }
+}
+
+const closeMenuButton = document.querySelector('#close-menu-btn').addEventListener("click", closeOpenMenu);
+const openMenuButton = document.querySelector('#show-menu-btn').addEventListener("click", closeOpenMenu);
