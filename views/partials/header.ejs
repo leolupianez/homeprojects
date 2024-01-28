@@ -2,7 +2,10 @@
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
     <div class="flex lg:flex-1">
       <a href="/" class="-m-1.5 p-1.5">
-        <img id="logo" class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="">
+        <div class="inline-flex text-md md:text-2xl">
+          <span class="text-white">Home</span> 
+          <span class="text-indigo-600">Projects</span>
+        </div>
       </a>
     </div>
     <div class="flex lg:hidden">
@@ -52,7 +55,7 @@
             <a href="/profile" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">Profile</a>
           </div>
           <div class="py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">Log out</a>
+            <a href="/logout" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">Log out</a>
           </div>
         </div>
         <% } else { %>
