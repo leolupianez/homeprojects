@@ -5,42 +5,36 @@
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
         <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form class="space-y-6" enctype="multipart/form-data" action="/pro/register" method="POST">
-                <!-- First Name -->
                 <div>
                     <label for="firstName" class="block text-sm font-semibold leading-6 text-gray-900">First Name</label>
                     <div class="mt-2">
                         <input type="text" name="firstName" id="firstName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
                     </div>
                 </div>
-                <!-- Last Name -->
                 <div>
                     <label for="lastName" class="block text-sm font-semibold leading-6 text-gray-900">Last Name</label>
                     <div class="mt-2">
                         <input type="text" name="lastName" id="lastName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
                     </div>
                 </div>
-                <!-- Company Logo -->
                 <div>
                     <label for="logo" class="block text-sm font-semibold leading-6 text-gray-900">Company Logo</label>
                     <div class="mt-2">
                         <input type="file" id="logo" name="logo" class="block w-full bg-base-100 text-gray-500 rounded-md border-0 py-1.5 px-2 cursor-pointer focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
-                <!-- Company Name -->
                 <div>
                     <label for="companyName" class="block text-sm font-semibold leading-6 text-gray-900">Company Name</label>
                     <div class="mt-2">
                         <input type="text" name="companyName" id="companyName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Company name" value="<%= typeof companyName != 'undefined' ? companyName : '' %>" required>
                     </div>
                 </div>
-                <!-- Company Phone -->
                 <div>
                     <label for="companyPhone" class="block text-sm font-semibold leading-6 text-gray-900">Company Phone</label>
                     <div class="mt-2">
                         <input type="text" name="companyPhone" id="companyPhone" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 <%= validationErrors.phoneError ? 'border border-red-500' : 'border-0' %>" placeholder="Company phone" value="<%= typeof companyPhone != 'undefined' ? companyPhone : '' %>" required>
                     </div>
                 </div>
-                <!-- Company Email -->
                 <div>
                     <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Company Email</label>
                     <div class="mt-2">
@@ -50,7 +44,6 @@
                         <% } %>
                     </div>
                 </div>
-                <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-semibold leading-6 text-gray-900">Password</label>
                     <div class="mt-2">
@@ -60,7 +53,6 @@
                         <% } %>
                     </div>
                 </div>
-                <!-- Confirm Password -->
                 <div>
                     <label for="confirmPassword" class="block text-sm font-semibold leading-6 text-gray-900">Confirm Password</label>
                     <div class="mt-2">
@@ -70,7 +62,6 @@
                         <% } %>
                     </div>
                 </div>
-                <!-- Submit Button -->
                 <div>
                     <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Register</button>
                 </div>

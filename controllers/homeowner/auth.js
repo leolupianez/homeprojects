@@ -100,9 +100,9 @@ module.exports = {
             })(req, res, next);
         }
     },
-    postDemoLogin: (req, res, next) => {
-        req.body.email = process.env.DEMO_EMAIL;
-        req.body.password = process.env.DEMO_PASS;
+    getDemoLogin: (req, res, next) => {
+        req.body.email = process.env.DEMO_USER_EMAIL;
+        req.body.password = process.env.DEMO_USER_PASS;
 
         passport.authenticate('local', (err, user, info) => {
             if (err) { return next(err); }

@@ -30,28 +30,6 @@ const imageUpload = document.querySelector('#image-upload');
 imageUpload?.addEventListener("change", previewImages);
 
 
-async function removeZip() {
-  try{
-    const response = await fetch('/pro/projects/removeZip', {
-      method: 'delete',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({
-        'zipCode': this.innerText
-      })
-    })
-    const data = await response.json()
-    location.reload()
-  }catch(err){
-    console.log(err)
-  }
-}
-
-const zipCodes = document.querySelectorAll('.badge.zipcode');
-zipCodes.forEach(zip => {
-  zip.addEventListener('click', removeZip)
-})
-
-
 function closeOpenMenu() {
   const menuClosed = document.querySelector('#mobile-menu').classList.contains('hidden')
   if(menuClosed) {

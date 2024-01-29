@@ -2,6 +2,7 @@ const passport = require("passport")
 const validator = require("validator")
 const cloudinary = require("../../middleware/cloudinary")
 const User = require('../../models/User')
+require("dotenv").config({ path: "./config/.env" });
 
 module.exports = {
     getRegister: (req, res) => {
@@ -112,6 +113,23 @@ module.exports = {
                 });
             })(req, res, next);
         }
+    },
+    getDemoLogin: (req, res, next) => {
+        req.body.email = process.env.DEMO_COMPANY_EMAIL;
+        req.body.password = process.env.DEMO_COMPANY_PASS;
+
+        passport.authenticate('local', (err, user, info) => {
+            if (err) { return next(err); }
+            if (!user) {
+                req.flash('errors', info);
+                return res.redirect("/pro/login");
+            }
+            req.logIn(user, (err) => {
+                if (err) { return next(err); }
+                req.flash('success', { msg: 'Success! You are logged in as demo company.' });
+                res.redirect(req.session.returnTo || '/');
+            });
+        })(req, res, next);
     },
     getLogout: (req, res, next) => {
         req.logout( err => {
