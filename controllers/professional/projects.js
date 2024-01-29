@@ -85,14 +85,15 @@ module.exports = {
             if(err){
                 return next(err)
             }
-            const index = user.company.zipCodes.indexOf(req.body.zipCode)
+            const index = user.company.zipCodes.indexOf(req.params.zip)
             if (index > -1) {
                 user.company.zipCodes.splice(index, 1)
                 user.save(err => {
                     if(err){
                         return next(err)
                     }
-                    res.json('Removed')
+                    req.flash("success", { msg: `Success! The zip code ${req.params.zip} has been removed.` });
+                    res.redirect(`/pro/projects`)
                 })
             }
         })

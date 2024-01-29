@@ -1,60 +1,74 @@
-<div class="container mx-auto py-5">
-    <h1 class="text-3xl font-bold py-3">Register as a Professional</h1>
-    <section class="flex flex-col gap-2 mb-4">
-        <form enctype="multipart/form-data" action="/pro/register" method="POST">
-            <div class="form-control">
-                <label for="firstName" class="label">
-                    <span class="label-text">First Name</span>
-                </label>
-                <input type="text" name="firstName" id="firstName" class="input input-bordered" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="lastName" class="label">
-                    <span class="label-text">Last Name</span>
-                </label>
-                <input type="text" name="lastName" id="lastName" class="input input-bordered" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="logo" class="label">
-                    <span class="label-text">Company Logo</span>
-                </label>
-                <input type="file" id="logo" name="logo" class="bg-base-100 text-gray-500 rounded-lg border border-gray-700 cursor-pointer focus:outline-none">
-            </div>
-            <div class="form-control">
-                <label for="companyName" class="label">
-                    <span class="label-text">Company Name</span>
-                </label>
-                <input type="text" name="companyName" id="companyName" class="input input-bordered" placeholder="Company name" value="<%= typeof companyName != 'undefined' ? companyName : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="companyPhone" class="label">
-                    <span class="label-text">Company Phone</span>
-                </label>
-                <input type="text" name="companyPhone" id="companyPhone" class="input input-bordered <%= validationErrors.phoneError ? 'input-error' : '' %>"" placeholder="Company phone" value="<%= typeof companyPhone != 'undefined' ? companyPhone : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="email" class="label">
-                    <span class="label-text">Company Email</span>
-                </label>
-                <input type="text" name="email" class="input input-bordered <%= validationErrors.emailError || validationErrors.emailTakenError ? 'input-error' : '' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="password" class="label">
-                    <span class="label-text">Password</span>
-                </label>
-                <input type="password" name="password" class="input input-bordered <%= validationErrors.passwordError ? 'input-error' : '' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
-            </div>
-            <div class="form-control">
-                <label for="confirmPassword" class="label">
-                    <span class="label-text">Confirm Password</span>
-                </label>
-                <input type="password" name="confirmPassword" class="input input-bordered <%= validationErrors.confirmationError ? 'input-error' : '' %>" id="confirmPassword" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
-            </div>
-
-            <div class="form-control mt-6">
-                <button class="btn btn-primary">Register</button>
-            </div>
-        </form>
-        <p class="py-5 text-sm">Are you a homeowner? <a href="/register" class="link">Register as a Homeowner</a></p>
-    </section>
+<div class="flex flex-col lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h1 class="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-white">Register as a Professional</h1>
+    </div>
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+        <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+            <form class="space-y-6" enctype="multipart/form-data" action="/pro/register" method="POST">
+                <div>
+                    <label for="firstName" class="block text-sm font-semibold leading-6 text-gray-900">First Name</label>
+                    <div class="mt-2">
+                        <input type="text" name="firstName" id="firstName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="First name" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="lastName" class="block text-sm font-semibold leading-6 text-gray-900">Last Name</label>
+                    <div class="mt-2">
+                        <input type="text" name="lastName" id="lastName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Last name" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="logo" class="block text-sm font-semibold leading-6 text-gray-900">Company Logo</label>
+                    <div class="mt-2">
+                        <input type="file" id="logo" name="logo" class="block w-full bg-base-100 text-gray-500 rounded-md border-0 py-1.5 px-2 cursor-pointer focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+                <div>
+                    <label for="companyName" class="block text-sm font-semibold leading-6 text-gray-900">Company Name</label>
+                    <div class="mt-2">
+                        <input type="text" name="companyName" id="companyName" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Company name" value="<%= typeof companyName != 'undefined' ? companyName : '' %>" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="companyPhone" class="block text-sm font-semibold leading-6 text-gray-900">Company Phone</label>
+                    <div class="mt-2">
+                        <input type="text" name="companyPhone" id="companyPhone" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 <%= validationErrors.phoneError ? 'border border-red-500' : 'border-0' %>" placeholder="Company phone" value="<%= typeof companyPhone != 'undefined' ? companyPhone : '' %>" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Company Email</label>
+                    <div class="mt-2">
+                        <input type="text" name="email" class="block w-full rounded-md py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 <%= validationErrors.emailError || validationErrors.emailTakenError ? 'border border-red-500' : 'border-0' %>" id="email" placeholder="Email Address" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                        <% if(validationErrors.emailError || validationErrors.emailTakenError){ %>
+                            <p class="text-red-500 text-xs italic pt-2">Please enter a valid email address.</p>
+                        <% } %>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-semibold leading-6 text-gray-900">Password</label>
+                    <div class="mt-2">
+                        <input type="password" name="password" class="block w-full rounded-md py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 <%= validationErrors.passwordError ? 'border border-red-500' : 'border-0' %>" id="password" placeholder="*******" value="<%= typeof password != 'undefined' ? password : '' %>" required>
+                        <% if(validationErrors.passwordError){ %>
+                            <p class="text-red-500 text-xs italic pt-2">Please enter a password that is at least 6 characters.</p>
+                        <% } %>
+                    </div>
+                </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-semibold leading-6 text-gray-900">Confirm Password</label>
+                    <div class="mt-2">
+                        <input type="password" name="confirmPassword" class="block w-full rounded-md py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 <%= validationErrors.confirmationError ? 'border border-red-500' : 'border-0' %>" id="confirmPassword" placeholder="*******" value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" required>
+                        <% if(validationErrors.confirmationError){ %>
+                            <p class="text-red-500 text-xs italic pt-2">Please make sure your passwords match.</p>
+                        <% } %>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Register</button>
+                </div>
+            </form>
+        </div>
+        <p class="mt-10 text-center text-sm text-gray-400">
+            Are you a homeowner? <a href="/register" class="font-semibold leading-6 text-indigo-400 hover:text-indigo-300">Register as a Homeowner</a>
+        </p>
+    </div>
 </div>

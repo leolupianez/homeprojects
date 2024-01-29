@@ -30,6 +30,7 @@ module.exports = {
     },
     postEditProfile: async (req, res) => {
         const { firstName, lastName, email, password, newPassword, confirmNewPassword } = req.body;
+
         const user = await User.findById(req.user.id)
 
         const validationErrors = {emailTakenError: false, emailError: false, passwordError: true, newPasswordError: false, confirmNewPasswordError: false};

@@ -50,7 +50,7 @@ module.exports = {
         if(await bcrypt.compare(password, user.password)){
             validationErrors.passwordError = false
         }else{
-            errors.push({msg: 'Password entered needs to much existing password.'})
+            errors.push({msg: 'Current password entered is incorrect.'})
         }
 
         // If password is being changed, password must match at least 6 characters

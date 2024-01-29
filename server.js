@@ -8,6 +8,7 @@ const methodOverride = require("method-override")
 const flash = require("express-flash")
 const expressLayouts = require('express-ejs-layouts')
 const logger = require('morgan')
+const reload = require('reload')
 const connectDB = require("./config/database")
 // Homeowner Routes
 const homeownerMainRoutes = require('./routes/homeowner/main')
