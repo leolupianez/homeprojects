@@ -4,7 +4,7 @@
      An app for homeowners to connect with home service professionals in their neighborhood and get help on their home projects. Homeowners can post projects while remaining anonymous to everyone that is not a part of their connections. 
     <br />
     <br />
-    <a href="https://homeprojects.cyclic.app/">View</a>
+    <a href="https://homeprojects.up.railway.app/">View</a>
     ·
     <a href="https://github.com/joselupianez/homeprojects/issues">Report Bug</a>
     ·
